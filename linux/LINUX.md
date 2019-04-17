@@ -9,8 +9,8 @@ $ sudo apt-get install nodejs
 ### Git
 Save username
 ```
-$ git config --global user.name "username"
-$ git config --global user.email "email"
+$ git config --global user.name <username>
+$ git config --global user.email <email>
 ```
 
 Save login
@@ -118,7 +118,7 @@ $ echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo
 [Read more](https://github.com/guard/listen/wiki/Increasing-the-amount-of-inotify-watchers#the-technical-details)
 
 ### chmod
-![..](https://github.com/lasanjin/notes/resources/file-permissions.png)
+<img src="fp.png" width="300"/>
 
 ```
 rwx rwx rwx = 111 111 111
