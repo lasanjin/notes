@@ -196,7 +196,7 @@ $ sudo apt install jq
    - *Simple Memory Monitor*
    - *System Monitor*
 
-### Put all your additions into a separate file
+### Put all your aliases into a separate file
 ```
 if [ -f ~/.bash_aliases ]; then
     source ~/.bash_aliases
@@ -256,22 +256,24 @@ org -> gnome -> gnome-session -> auto-save-session
 
 
 # Fun & useful
-`$ cal` *Calendar*\
+`$ cal` *CLI calendar*\
 `$ rev <input>` *Reverse input* \
 `$ inxi -Fxz` *System info*\
 `$ sudo service /etc/init.d/dns-clean start` *Flush DNS Cache*\
 `$ locale -a` *List the installed locales which will work for the LC_ALL variable*\
-`LC_TIME=sv_SE.utf-8 date '+%A'` *Get today in Swedish*\
-`sudo dpkg -r <package-name>` *Install package*
-
-<br/>
+`$ LC_TIME=sv_SE.utf-8 date '+%A'` *Get today in Swedish*\
+`$ sudo dpkg -r <package>` *Install debian package*
 
 ## Shortcuts
 `Ctrl`+`Alt`+`Arrow` *Move to other desktop*\
 `Super`+`Shift`+`Alt`+`Arrow` *Move window to other desktop*\
-`Super`+`Shift`+`Arrow` *Move window to other monitor*
+`Super`+`Shift`+`Arrow` *Move window to other monitor*\
+
+More commands & shortcuts [here](https://community.linuxmint.com/tutorial/view/244)
+
 
 <br/>
+
 
 ### Snap
 ```
@@ -286,7 +288,7 @@ $ sudo <text-editor> /etc/hosts
 
 ### Tree
 ```
-$ apt install tree
+$ sudo apt install tree
 ```
 
 ### Auto-complete sudo-apt get
