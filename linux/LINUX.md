@@ -301,3 +301,9 @@ $ sudo apt-get install bash-completion
 $ sudo apt-get install neofetch
 ```
 [Read more](https://github.com/dylanaraps/neofetch)
+
+### Peek
+```
+$ sudo add-apt-repository ppa:peek-developers/stable
+$ sudo apt install peek
+```
