@@ -307,3 +307,20 @@ $ sudo apt-get install neofetch
 $ sudo add-apt-repository ppa:peek-developers/stable
 $ sudo apt install peek
 ```
+
+### Google Translate
+Alt 1 
+- Install
+```
+$ sudo apt-get install translate-shell
+```
+Alt 2 
+- Download
+```
+$ wget git.io/trans$ sudo apt install peek
+$ chmod +x trans
+```
+- How to use example
+```
+$ ./trans -b -j -lang english -target swedish
+```
