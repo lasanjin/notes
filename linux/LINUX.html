@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+        <title>Programming</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+        <link href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css" rel="stylesheet" type="text/css">
+        <style>
+.task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middle; }
+</style>
+        <style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        
+        <script src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>
+    </head>
+    <body>
+        <h1 id="programming">Programming</h1>
+<h3 id="jdk">JDK</h3>
+<p><a href="https://www.baeldung.com/oracle-jdk-vs-openjdk">Oracle-JDK vs OpenJDK</a></p>
+<ol>
+<li>Remove OpenJDK</li>
+</ol>
+<pre><code><div>$ sudo apt-get --purge remove openjdk* &amp;&amp; sudo apt-get autoremove &amp;&amp; sudo apt-get clean
+</div></code></pre>
+<ol start="2">
+<li>
+<p>Download <a href="https://www.oracle.com/technetwork/java/javase/downloads/index.html">here</a></p>
+</li>
+<li>
+<p>Extract, create as root directory</p>
+</li>
+</ol>
+<pre><code><div>$ sudo tar -zxvf jdk-* &amp;&amp; sudo mkdir -p /opt/java &amp;&amp; sudo mv jdk-* /opt/java
+</div></code></pre>
+<ol start="4">
+<li>Install</li>
+</ol>
+<pre><code><div>$ sudo update-alternatives --install &quot;/usr/bin/java&quot; &quot;java&quot; &quot;/opt/java/jdk&lt;version&gt;/bin/java&quot; 1
+</div></code></pre>
+<ol start="5">
+<li>Make system default</li>
+</ol>
+<pre><code><div>$ sudo update-alternatives --set java /opt/java/jdk&lt;version&gt;/bin/java
+</div></code></pre>
+<h3 id="node--npm">Node &amp; NPM</h3>
+<pre><code><div>$ sudo apt-get install curl python-software-properties
+$ curl -sL https://deb.nodesource.com/setup_11.x | sudo bash -
+$ sudo apt-get install nodejs
+</div></code></pre>
+<h3 id="apache-maven">Apache Maven</h3>
+<p>Alt 1</p>
+<pre><code><div>$ sudo apt install maven
+</div></code></pre>
+<br/>
+<p>Alt 2</p>
+<ol>
+<li>
+<p>Download <a href="https://maven.apache.org/download.cgi">here</a></p>
+</li>
+<li>
+<p>Extract</p>
+</li>
+</ol>
+<pre><code><div>$ sudo tar xf /tmp/apache-maven-*.tar.gz -C /opt
+</div></code></pre>
+<ol start="3">
+<li>Setup enviromental variables</li>
+</ol>
+<pre><code><div>$ sudo &lt;text-editor&gt; /etc/profile.d/maven.sh
+</div></code></pre>
+<ol start="4">
+<li>Configuration</li>
+</ol>
+<pre><code><div>export JAVA_HOME=/usr/bin/java
+export M2_HOME=/opt/maven
+export MAVEN_HOME=/opt/maven
+export PATH=${M2_HOME}/bin:${PATH}
+</div></code></pre>
+<ol start="5">
+<li>Make the script executable</li>
+</ol>
+<pre><code><div>$ sudo chmod +x /etc/profile.d/maven.sh &amp;&amp; . /.maven.sh
+</div></code></pre>
+<h3 id="git">Git</h3>
+<ol>
+<li>Save username</li>
+</ol>
+<pre><code><div>$ git config --global user.name &lt;username&gt;
+$ git config --global user.email &lt;email&gt;
+</div></code></pre>
+<ol start="2">
+<li>Save login</li>
+</ol>
+<pre><code><div>$ git config credential.helper store
+$ git config --list
+</div></code></pre>
+<ol start="3">
+<li>Enable credential caching for 7200sec (2h)</li>
+</ol>
+<pre><code><div>$ git config --global credential.helper 'cache --timeout 7200'
+</div></code></pre>
+<h3 id="intellij">Intellij</h3>
+<ul>
+<li>Default directory</li>
+</ul>
+<pre><code><div>File -&gt; Settings -&gt; Appearance &amp; Behavior -&gt; System Settings -&gt; Default directory
+</div></code></pre>
+<ul>
+<li>Set JDK</li>
+</ul>
+<pre><code><div>File -&gt; Project Structure -&gt; SDKs
+</div></code></pre>
+<ul>
+<li>Switch JDK</li>
+</ul>
+<pre><code><div>Help -&gt; Find Action -&gt; Swtich Boot JDK
+</div></code></pre>
+<h3 id="vs-code">VS Code</h3>
+<ul>
+<li>List all extensions</li>
+</ul>
+<pre><code><div>$ code --list-extensions | xargs -L 1 echo code --install-extension
+</div></code></pre>
+<ul>
+<li>Install current extensions</li>
+</ul>
+<pre><code><div>code --install-extension 2gua.rainbow-brackets
+code --install-extension dbaeumer.vscode-eslint
+code --install-extension dsznajder.es7-react-js-snippets
+code --install-extension foxundermoon.shell-format
+code --install-extension JuanBlanco.solidity
+code --install-extension ms-python.python
+code --install-extension shd101wyy.markdown-preview-enhanced
+code --install-extension yzhang.markdown-all-in-one
+</div></code></pre>
+<p><strong>OBS</strong> shell-format requires golang and shfmt installed</p>
+<pre><code><div>$ sudo snap install shfmt
+$ sudo snap install --classic go
+</div></code></pre>
+<p><strong>OBS</strong> requires <a href="#Snap">snap</a> to be installed</p>
+<br/>
+<br/>
+<h1 id="todos-after-installation">TODOs after installation</h1>
+<h2 id="drivers">Drivers</h2>
+<h3 id="battery">Battery</h3>
+<pre><code><div>$ sudo add-apt-repository ppa:linrunner/tlp
+$ sudo apt-get update
+$ sudo apt-get install tlp tlp-rdw
+
+Thinkpad specific:
+$ sudo apt-get install tp-smapi-dkms acpi-call-dkms
+</div></code></pre>
+<ul>
+<li>tlp1.
+<ul>
+<li>Power saving</li>
+</ul>
+</li>
+<li>tlp-rdw
+<ul>
+<li><em>optional</em></li>
+<li>Radio Device Wizard</li>
+</ul>
+</li>
+<li>tp-smapi-dkms
+<ul>
+<li><em>ThinkPad</em></li>
+<li>Provides battery charge thresholds, recalibration and specific status output in tlp-stat for older ThinkPads</li>
+</ul>
+</li>
+<li>acpi-call-dkms
+<ul>
+<li><em>ThinkPad</em></li>
+<li>Provides battery charge thresholds and recalibration for newer ThinkPads (X220/T420 and later)</li>
+</ul>
+</li>
+</ul>
+<h3 id="touchpad">Touchpad</h3>
+<ul>
+<li>Thinkpad Synaptics touchpad drivers</li>
+</ul>
+<pre><code><div>$ xserver-xorg-input-synaptics
+</div></code></pre>
+<h3 id="mx-master-2s">MX Master 2S</h3>
+<pre><code><div>$ apt remove blueberry -y &amp;&amp; apt install blueman
+</div></code></pre>
+<h3 id="codecs">Codecs</h3>
+<pre><code><div>$ sudo apt install mint-meta-codecs
+</div></code></pre>
+<br/>
+<h2 id="applications">Applications</h2>
+<h3 id="spotify">Spotify</h3>
+<pre><code><div>$ sudo apt-get install spotify-client
+</div></code></pre>
+<h3 id="json-processor-terminal">JSON processor terminal</h3>
+<pre><code><div>$ sudo apt install jq
+</div></code></pre>
+<br/>
+<h2 id="additional-settings">Additional settings</h2>
+<ul>
+<li>Activate Redshift</li>
+<li>Show battery percentage</li>
+<li>Setup volume</li>
+<li>Enable Firewall
+<ul>
+<li>Mint default is Utf (Uncomplicated Firewall)</li>
+</ul>
+</li>
+<li>Applets
+<ul>
+<li><em>Simple Memory Monitor</em></li>
+<li><em>System Monitor</em></li>
+</ul>
+</li>
+</ul>
+<h3 id="put-all-your-aliases-into-a-separate-file">Put all your aliases into a separate file</h3>
+<pre><code><div>if [ -f ~/.bash_aliases ]; then
+    source ~/.bash_aliases
+fi
+</div></code></pre>
+<br/>
+<br/>
+<h1 id="misc">Misc</h1>
+<h3 id="allowing-user-to-run-sudo">Allowing user to run sudo</h3>
+<p>Alt 1</p>
+<pre><code><div>$ sudo adduser &lt;username&gt; sudo
+</div></code></pre>
+<p>Alt 2</p>
+<pre><code><div>$ sudo visudo 
+
+Add &lt;username&gt; ALL=(ALL) NOPASSWD: ALL
+</div></code></pre>
+<p><a href="https://help.ubuntu.com/community/RootSudo#Allowing_other_users_to_run_sudo">Read more</a></p>
+<h3 id="increasing-the-amount-of-inotify-watchers-permanently">Increasing the amount of inotify watchers permanently</h3>
+<pre><code><div>$ echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf &amp;&amp; sudo sysctl -p
+</div></code></pre>
+<p><a href="https://github.com/guard/listen/wiki/Increasing-the-amount-of-inotify-watchers#the-technical-details">Read more</a></p>
+<h3 id="chmod">chmod</h3>
+<div style="text-align:center"><img src="file:////home/lasanjin/devel/github/notes/linux/fp.png" width="350"></div>
+<pre><code><div>rwx rwx rwx = 111 111 111
+rw- rw- rw- = 110 110 110
+rwx --- --- = 111 000 000
+</div></code></pre>
+<pre><code><div>rwx = 111 in binary = 7
+rw- = 110 in binary = 6
+r-x = 101 in binary = 5
+r-- = 100 in binary = 4
+</div></code></pre>
+<h3 id="save-and-restore-session">Save and restore session</h3>
+<pre><code><div>$ sudo apt-get install dconf-tools
+$ dconf-editor
+</div></code></pre>
+<p>org -&gt; gnome -&gt; gnome-session -&gt; auto-save-session</p>
+<br/>
+<br/>
+<h1 id="fun--useful">Fun &amp; useful</h1>
+<p><code>$ cal</code> <em>CLI calendar</em><br>
+<code>$ rev &lt;input&gt;</code> <em>Reverse input</em> <br>
+<code>$ inxi -Fxz</code> <em>System info</em><br>
+<code>$ sudo service /etc/init.d/dns-clean start</code> <em>Flush DNS Cache</em><br>
+<code>$ locale -a</code> <em>List the installed locales which will work for the LC_ALL variable</em><br>
+<code>$ LC_TIME=sv_SE.utf-8 date '+%A'</code> <em>Get today in Swedish</em><br>
+<code>$ sudo dpkg -r &lt;package&gt;</code> <em>Install debian package</em><br>
+<code>$ tput cols</code> <em>number of columns</em><br>
+<code>$ tput lines</code> <em>number of rows</em></p>
+<h2 id="shortcuts">Shortcuts</h2>
+<p><code>Ctrl</code>+<code>Alt</code>+<code>Arrow</code> <em>Move to other desktop</em><br>
+<code>Super</code>+<code>Shift</code>+<code>Alt</code>+<code>Arrow</code> <em>Move window to other desktop</em><br>
+<code>Super</code>+<code>Shift</code>+<code>Arrow</code> <em>Move window to other monitor</em><br>
+<code>Shift</code>+<code>PrtCn</code> <em>Select area to grab for screenshot</em></p>
+<p>More commands &amp; shortcuts <a href="https://community.linuxmint.com/tutorial/view/244">here</a></p>
+<br/>
+<h3 id="snap">Snap</h3>
+<pre><code><div>$ sudo apt install snapd
+</div></code></pre>
+<h3 id="change-hostname">Change hostname</h3>
+<pre><code><div>$ sudo &lt;text-editor&gt; /etc/hostname
+$ sudo &lt;text-editor&gt; /etc/hosts
+</div></code></pre>
+<h3 id="tree">Tree</h3>
+<pre><code><div>$ sudo apt install tree
+</div></code></pre>
+<h3 id="auto-complete-sudo-apt-get">Auto-complete sudo-apt get</h3>
+<pre><code><div>$ sudo apt-get install bash-completion
+</div></code></pre>
+<h3 id="neofetch">Neofetch</h3>
+<pre><code><div>$ sudo apt-get install neofetch
+</div></code></pre>
+<p><a href="https://github.com/dylanaraps/neofetch">Read more</a></p>
+<h3 id="peek">Peek</h3>
+<pre><code><div>$ sudo add-apt-repository ppa:peek-developers/stable
+$ sudo apt install peek
+</div></code></pre>
+<h3 id="google-translate">Google Translate</h3>
+<p>Alt 1</p>
+<ul>
+<li>Install</li>
+</ul>
+<pre><code><div>$ sudo apt-get install translate-shell
+</div></code></pre>
+<p>Alt 2</p>
+<ul>
+<li>Download</li>
+</ul>
+<pre><code><div>$ wget git.io/trans$ sudo apt install peek
+$ chmod +x trans
+</div></code></pre>
+<ul>
+<li>How to use example</li>
+</ul>
+<pre><code><div>$ ./trans -b -j -lang english -target swedish
+</div></code></pre>
+
+    </body>
+    </html>
