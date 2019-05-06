@@ -266,9 +266,10 @@ org -> gnome -> gnome-session -> auto-save-session
 `$ tput cols` *Number of columns*\
 `$ tput lines` *Number of rows*\
 `$ xrandr -q` *State of system display*\
-`gsettings get org.blueman.transfer shared-path` *get path for directory for incoming files*\
-`gsettings set org.blueman.transfer shared-path '<path>'` *edit path for incoming files*\
-`upower -i upower -e | grep 'BAT'` *List battery info*
+`$ xrandr --output <monitor> --brightness 0.5` *Adjust brightness*\
+`$ gsettings get org.blueman.transfer shared-path` *get path for directory for incoming files*\
+`$ gsettings set org.blueman.transfer shared-path '<path>'` *edit path for incoming files*\
+`$ upower -i upower -e | grep 'BAT'` *List battery info*
 
 ## Shortcuts
 `Ctrl`+`Alt`+`Arrow` *Move to other desktop*\
