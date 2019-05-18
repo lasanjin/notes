@@ -3,5 +3,8 @@
  - ### [Drivers, apps & settings](linux/INSTALL.md)
 
 ## Code
- - ### [Tools](code/TOOLS.md)
+ - ### [Tools etc.](code/TOOLS.md)
  - ### [Bash](code/BASH.md)
+
+## Others
+ - ### [Latex](others/LATEX.md)

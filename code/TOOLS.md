@@ -1,8 +1,7 @@
 [⌫ back](../README.md)
 
-# Code
-
-### JDK
+# Tools
+## JDK
 [Oracle-JDK vs OpenJDK](https://www.baeldung.com/oracle-jdk-vs-openjdk)
 
 1. Remove OpenJDK
@@ -27,49 +26,7 @@ $ sudo update-alternatives --install "/usr/bin/java" "java" "/opt/java/jdk<versi
 $ sudo update-alternatives --set java /opt/java/jdk<version>/bin/java
 ```
 
-### Node & NPM
-```
-$ sudo apt-get install curl python-software-properties
-$ curl -sL https://deb.nodesource.com/setup_11.x | sudo bash -
-$ sudo apt-get install nodejs
-```
-
-### Python
-Find path(s)
-```
-$ which -a <python/pip>
-```
-
-Python 2
-```
-$ sudo apt-get install python-all-dev python-wheel python-setuptools
-```
-
- - Formatter
-```
-$ python2.7 -m pip install autopep8
-```
-
-Python 3
-```
-$ sudo apt-get install python3-all-dev python3-wheel python3-setuptools
-```
-
-### Python libraries
-### jq
-```
-$ sudo python2.7 -m pip install pyjq
-```
-Installation requires programs required to build jq. This includes:
- - Autoreconf
- - C compiler toolchain (gcc, make)
- - libtool
- - Python headers
-```
-$ sudo install autoconf automake libtool python
-```
-
-### Apache Maven
+## Apache Maven
 Alt 1
 ```
 $ sudo apt install maven
@@ -102,9 +59,14 @@ export PATH=${M2_HOME}/bin:${PATH}
 $ sudo chmod +x /etc/profile.d/maven.sh && . /.maven.sh
 ```
 
+## Node & NPM
+```
+$ sudo apt-get install curl python-software-properties
+$ curl -sL https://deb.nodesource.com/setup_11.x | sudo bash -
+$ sudo apt-get install nodejs
+```
 
-
-### Git
+## Git
 1. Save username
 ```
 $ git config --global user.name <username>
@@ -122,7 +84,52 @@ $ git config --list
 $ git config --global credential.helper 'cache --timeout 7200'
 ```
 
-### Intellij
+
+<br/>
+
+
+# Python
+Find path(s)
+```
+$ which -a <python/pip>
+```
+
+## Python 2
+```
+$ sudo apt-get install python-all-dev python-wheel python-setuptools
+```
+
+ - Formatter
+```
+$ python2.7 -m pip install autopep8
+```
+
+## Python 3
+```
+$ sudo apt-get install python3-all-dev python3-wheel python3-setuptools
+```
+
+## Libraries
+
+### jq
+```
+$ sudo python2.7 -m pip install pyjq
+```
+Installation requires programs required to build jq. This includes:
+ - Autoreconf
+ - C compiler toolchain (gcc, make)
+ - libtool
+ - Python headers
+```
+$ sudo install autoconf automake libtool python
+```
+
+
+<br/>
+
+
+# IDE
+## Intellij
 - Default directory
 ```
 File -> Settings -> Appearance & Behavior -> System Settings -> Default directory
@@ -138,13 +145,13 @@ File -> Project Structure -> SDKs
 Help -> Find Action -> Swtich Boot JDK
 ```
 
-### VS Code
-- List all extensions
+## VS Code
+### List all extensions
 ```
 $ code --list-extensions | xargs -L 1 echo code --install-extension
 ```
 
-- Install current extensions
+### Install current extensions
 ```
 $ code --install-extension 2gua.rainbow-brackets
 $ code --install-extension dbaeumer.vscode-eslint
@@ -162,4 +169,3 @@ $ code --install-extension yzhang.markdown-all-in-one
 $ sudo snap install shfmt
 $ sudo snap install --classic go
 ```
-**OBS** requires [snap](#Snap) to be installed
