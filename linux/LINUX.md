@@ -16,9 +16,7 @@
 `$ gsettings set org.blueman.transfer shared-path '<path>'` *edit path for incoming files*\
 `$ upower -i upower -e | grep 'BAT'` *List battery info*
 
-
 <br/>
-
 
 # Shortcuts
 `Ctrl`+`Alt`+`Arrow` *Move to other desktop*\
@@ -28,9 +26,29 @@
 
 More shortcuts [here](https://community.linuxmint.com/tutorial/view/244)
 
-
 <br/>
 
+# WC Command
+Syntax 
+```
+$ wc [options] filename
+```
+No parameters
+
+```
+$ wc filename
+```
+Outputs
+- number of lines
+- number of words
+- number of bytes
+
+## Commands
+`wc -l` *Number of lines* \
+`wc -w` *Number of words* \
+`wc -c` *Count of bytes* \
+`wc -m` *Print the count of characters* \
+`wc -L` *Prints only the length of the longest line* \
 
 # Misc
 ### chmod
