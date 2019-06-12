@@ -169,3 +169,17 @@ $ code --install-extension yzhang.markdown-all-in-one
 $ sudo snap install shfmt
 $ sudo snap install --classic go
 ```
+
+### Remote VSCode
+1. Install the extension and re-launch VSCode
+2. In VM install rmate
+```
+$ sudo wget -O /usr/local/bin/rmate https://raw.github.com/aurora/rmate/master/rmate
+$ sudo chmod a+x /usr/local/bin/rmate
+```
+3. In VSCode do Ctrl+P and execute the `>Remote: Start Server`
+4. Connect to VM
+```
+$ ssh -R 52698:localhost:52698 VIRTUAL_MACHINE_IP_ADDRESS
+```
+5. Open file from VM in localhost `$ rmate <filename>`

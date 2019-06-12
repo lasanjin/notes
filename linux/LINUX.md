@@ -28,6 +28,17 @@ More shortcuts [here](https://community.linuxmint.com/tutorial/view/244)
 
 <br/>
 
+# SSH
+## Keygen
+Read more [here](https://linux.die.net/man/1/ssh-keygen)
+
+## Warnings
+ -  "WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED"
+```
+$ ssh-keygen -R <host>
+```
+`-R <host>` removes all keys belonging to hostname from a known_hosts file. This option is useful to delete hashed hosts (see the -H option).
+
 # WC Command
 Syntax 
 ```
