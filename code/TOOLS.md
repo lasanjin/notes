@@ -11,6 +11,8 @@ $ sudo apt-get --purge remove openjdk* && sudo apt-get autoremove && sudo apt-ge
 
 2. Download [here](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
 
+Alt 1
+
 3. Extract, create as root directory
 ```
 $ sudo tar -zxvf jdk-* && sudo mkdir -p /opt/java && sudo mv jdk-* /opt/java
@@ -26,7 +28,42 @@ $ sudo update-alternatives --install "/usr/bin/java" "java" "/opt/java/jdk<versi
 $ sudo update-alternatives --set java /opt/java/jdk<version>/bin/java
 ```
 
-## Apache Maven
+Alt 2
+
+3. Extract
+```
+$ sudo tar -zxvf jdk-*
+```
+
+4. Set PATH in /etc/enviroment
+```
+JAVA_HOME=<path>
+export JAVA_HOME
+```
+
+4. Reload the system PATH
+```
+$ . /etc/enviroment
+```
+
+Alt 3
+
+1. Install
+```
+$ sudo add-apt-repository ppa:webupd8team/java
+$ sudo apt-get update
+$ sudo apt-get install oracle-java8-installer
+```
+2. Set PATH
+
+
+### List Java versions
+```
+$ sudo update-alternatives --config java
+```
+
+
+## Maven
 Alt 1
 ```
 $ sudo apt install maven
@@ -59,12 +96,51 @@ export PATH=${M2_HOME}/bin:${PATH}
 $ sudo chmod +x /etc/profile.d/maven.sh && . /.maven.sh
 ```
 
+### Intellij configuration
+1. Get path to Maven 
+```
+$ maven -v
+```
+2. Change home directory
+
+Settings -> Build, Execution, Deployment -> Maven -> Maven home directory
+
+3. Set permission on project
+```
+$ sudo chmod -R 777 <folder>
+```
+
+4. Build project manually
+```
+$ sudo mvn clean install
+```
+
+
+## Vue
+```
+$ sudo apt-get install @vue/cli
+```
+How to init
+```
+$ vue create -d <name>
+$ npm add axios@0.18.0 vuejs-logger@1.5.3
+$ npm run serve
+```
+ - axios is the package to make HTTP requests to server. 
+ - vuejs-logger is a logging framework
+
+
+## Spring Boot
+ - Init project [here](https://start.spring.io/)
+
+
 ## Node & NPM
 ```
 $ sudo apt-get install curl python-software-properties
 $ curl -sL https://deb.nodesource.com/setup_11.x | sudo bash -
 $ sudo apt-get install nodejs
 ```
+
 
 ## Git
 1. Save username
@@ -183,3 +259,10 @@ $ sudo chmod a+x /usr/local/bin/rmate
 $ ssh -R 52698:localhost:52698 VIRTUAL_MACHINE_IP_ADDRESS
 ```
 5. Open file from VM in localhost `$ rmate <filename>`
+
+The -R option sets up a reverse tunnel. The first 52698 names a port on
+the remote. It will be connected to localhost:52698 or the same port on
+the connecting box. That port number is the default for TextMate 2 and
+rmate.
+
+

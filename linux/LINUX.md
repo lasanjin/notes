@@ -14,7 +14,11 @@
 `$ xrandr --output <monitor> --brightness 0.5` *Adjust brightness*\
 `$ gsettings get org.blueman.transfer shared-path` *get path for directory for incoming files*\
 `$ gsettings set org.blueman.transfer shared-path '<path>'` *edit path for incoming files*\
-`$ upower -i upower -e | grep 'BAT'` *List battery info*
+`$ upower -i upower -e | grep 'BAT'` *List battery info*\
+`$ tail -n 1 <file>` *Check 1 line of the end of file*\
+`$ lsb_release -a` *Debian/Ubuntu version*\
+`$ lscpu` *CPU info*\
+`$ ulimit -n` *How many files can be open at once for each CPU core*
 
 <br/>
 
@@ -29,6 +33,31 @@ More shortcuts [here](https://community.linuxmint.com/tutorial/view/244)
 <br/>
 
 # SSH
+
+## Connect to VM
+
+1. Generate SSH key-pair
+```
+$ sudo ssh-keygen -t rsa
+```
+
+2. Save public-key to VM instance
+```
+$ cat ~/.ssh/id_rsa.pub
+```
+   
+3. Connect to VM
+```
+$ ssh username@hostname
+```
+
+## Commands
+
+Copy files to VM
+```
+$ scp -r <file> username@ip:~/.
+```
+
 ## Keygen
 Read more [here](https://linux.die.net/man/1/ssh-keygen)
 
@@ -38,6 +67,37 @@ Read more [here](https://linux.die.net/man/1/ssh-keygen)
 $ ssh-keygen -R <host>
 ```
 `-R <host>` removes all keys belonging to hostname from a known_hosts file. This option is useful to delete hashed hosts (see the -H option).
+
+<br/>
+
+# Crypto
+## GPG
+Generate PGP key-pair
+```
+$ sudo gpg --gen-key
+```
+
+Export public key
+```
+$ sudo gpg --armor --export <email@address.com> > public-key.asc
+```
+
+Import public key
+```
+$ sudo gpg --import <public-key-file>
+```
+
+Encrypt message
+```
+$ sudo gpg --encrypt --armor -recipient <email@address.com> <message-file>
+```
+
+Decrypt message
+```
+$ sudo gpg <encrypted-message.asc>
+```
+
+<br/>
 
 # WC Command
 Syntax 
@@ -54,12 +114,14 @@ Outputs
 - number of words
 - number of bytes
 
-## Commands
+## Args
 `wc -l` *Number of lines* \
 `wc -w` *Number of words* \
 `wc -c` *Count of bytes* \
 `wc -m` *Print the count of characters* \
 `wc -L` *Prints only the length of the longest line* \
+
+<br/>
 
 # Misc
 ### chmod

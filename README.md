@@ -5,6 +5,7 @@
 ## Code
  - ### [Tools etc.](code/TOOLS.md)
  - ### [Bash](code/BASH.md)
+ - ### [NGINX](code/NGINX.md)
 
 ## Others
- - ### [Latex](others/LATEX.md)
+ - ### [LaTeX](others/LATEX.md)
