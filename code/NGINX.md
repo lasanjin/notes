@@ -1,9 +1,6 @@
 [⌫ back](../README.md)
 
 # NGINX
-## Commands
-`$ ps aux | grep nginx` *process command: all users and boot processes for nginx*\
-`./configure --help` *List all available modules*\
 
 ## Installation
 1. Install compiler
@@ -16,7 +13,7 @@ Run `$ ./configure` in NGINX folder to check dependencies
 
 3. Install useful packages
 ```
-$ sudo apt-install libpcre3 libpcre3-dev zlib1g-dev libssl-dev
+$ sudo apt-get install libpcre3 libpcre3-dev zlib1g-dev libssl-dev
 ```
 
 4. Configuration options. More [here](http://nginx.org/en/docs/)
@@ -91,6 +88,8 @@ $ sudo apt-get install libgd-dev
 `$ ./configure --help | grep without` *List all default modules*\
 `$ nginx -V 2>&1 | tr -- - '\n' | grep module` *List all installed modules*\
 `$ sudo systemctl list-units | grep <service name>` *List all systemd services* \
+`$ ps aux | grep nginx` *process command: all users and boot processes for nginx*\
+`./configure --help` *List all available modules*\
 `$ sudo nginx -t` *Test configuration*
 
 
@@ -150,7 +149,7 @@ Alt 2
 
 Skip above (installation)
 ```
-$ certbot certonly -d <mydomain.com>
+$ sudo certbot certonly -d <mydomain.com>
 ```
 
 ### Renew certificate

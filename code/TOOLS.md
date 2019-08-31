@@ -9,11 +9,12 @@
 $ sudo apt-get --purge remove openjdk* && sudo apt-get autoremove && sudo apt-get clean
 ```
 
-2. Download [here](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
+2. Download Oracle [here](https://www.oracle.com/technetwork/java/javase/downloads/index.html)\
+Download OpenJDK [here](https://jdk.java.net/)
 
 Alt 1
 
-3. Extract, create as root directory
+1. Extract, create as root directory
 ```
 $ sudo tar -zxvf jdk-* && sudo mkdir -p /opt/java && sudo mv jdk-* /opt/java
 ```
@@ -41,6 +42,7 @@ JAVA_HOME=<path>
 export JAVA_HOME
 ```
 
+
 4. Reload the system PATH
 ```
 $ . /etc/enviroment
@@ -50,11 +52,11 @@ Alt 3
 
 1. Install
 ```
-$ sudo add-apt-repository ppa:webupd8team/java
+$ sudo add-apt-repository ppa:openjdk-r/ppa
 $ sudo apt-get update
 $ sudo apt-get install oracle-java8-installer
 ```
-2. Set PATH
+2. Set PATH (/usr/lib/jvm/java-XX-openjdk-amd64/)
 
 
 ### List Java versions
@@ -62,6 +64,16 @@ $ sudo apt-get install oracle-java8-installer
 $ sudo update-alternatives --config java
 ```
 
+### Set default Java version
+1. Type in a number to select a Java version
+```
+$ sudo update-alternatives --config java
+```
+
+2. Set default Java compiler by running
+```
+$ sudo update-alternatives --config java
+```
 
 ## Maven
 Alt 1
@@ -266,3 +278,13 @@ the connecting box. That port number is the default for TextMate 2 and
 rmate.
 
 
+<br/>
+
+
+# GCE
+
+### Cloud SDK
+[Guide](https://cloud.google.com/sdk/docs/quickstart-debian-ubuntu)
+
+### Kubernetes on GCE
+[Guide](https://kubernetes.io/docs/setup/production-environment/turnkey/gce/)

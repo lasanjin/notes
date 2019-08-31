@@ -89,7 +89,7 @@ $ sudo gpg --import <public-key-file>
 
 Encrypt message
 ```
-$ sudo gpg --encrypt --armor -recipient <email@address.com> <message-file>
+$ sudo gpg --encrypt --armor --recipient <email@address.com> <message-file>
 ```
 
 Decrypt message
@@ -120,6 +120,12 @@ Outputs
 `wc -c` *Count of bytes* \
 `wc -m` *Print the count of characters* \
 `wc -L` *Prints only the length of the longest line* \
+
+<br/>
+
+# Nano
+## Commands
+`Shift` + `Insert` *Paste text copied outside of nano* \
 
 <br/>
 

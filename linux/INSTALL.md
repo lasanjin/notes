@@ -51,9 +51,29 @@ fi
 ```
 
 ### Tab auto-complete case-insensitive in Bash
+
+If ~/.inputrc doesn't exist yet
 ```
 $ touch ~/.inputrc
 $ echo 'set completion-ignore-case On' >> ~/.inputrc
+```
+~/.inputrc is located in `/etc/inputrc`
+
+### Ctrl + arrow in terminal
+1. In ~/.bashrc
+```
+bind '"\e[1;5D" backward-word' 
+bind '"\e[1;5C" forward-word'
+```
+
+2. In ~/.inputrc
+```
+"\e[1;5C": forward-word
+"\e[1;5D": backward-word
+"\e[5C": forward-word
+"\e[5D": backward-word
+"\e\e[C": forward-word
+"\e\e[D": backward-word
 ```
 
 ### User run sudo
