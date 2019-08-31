@@ -281,10 +281,10 @@ rmate.
 <br/>
 
 
-# GCE
+# GCP
 
 ### Cloud SDK
 [Guide](https://cloud.google.com/sdk/docs/quickstart-debian-ubuntu)
 
-### Kubernetes on GCE
+### GKE
 [Guide](https://kubernetes.io/docs/setup/production-environment/turnkey/gce/)

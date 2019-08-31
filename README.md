@@ -3,9 +3,10 @@
  - ### [Drivers, apps & settings](linux/INSTALL.md)
 
 ## Code
- - ### [Tools etc.](code/TOOLS.md)
+ - ### [Tools...](code/TOOLS.md)
  - ### [Bash](code/BASH.md)
  - ### [NGINX](code/NGINX.md)
+ - ### [Kubernetes](code/KUBERNETES.md)
 
 ## Others
  - ### [LaTeX](others/LATEX.md)
