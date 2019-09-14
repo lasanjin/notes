@@ -18,7 +18,10 @@
 `$ tail -n 1 <file>` *Check 1 line of the end of file*\
 `$ lsb_release -a` *Debian/Ubuntu version*\
 `$ lscpu` *CPU info*\
-`$ ulimit -n` *How many files can be open at once for each CPU core*
+`$ ulimit -n` *How many files can be open at once for each CPU core*\
+`$ dpkg --list | grep compiler` *List compilers*\
+`$ find . -mindepth 2 -maxdepth 2 -type d -printf '%f\n' > $HOME/cids.txt` *Save names of subdirectories to file*\
+`sed 's/$/<ENDING>' ips.txt > new-ips.txt` **
 
 <br/>
 

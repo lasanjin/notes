@@ -262,15 +262,16 @@ $ sudo snap install --classic go
 1. Install the extension and re-launch VSCode
 2. In VM install rmate
 ```
-$ sudo wget -O /usr/local/bin/rmate https://raw.github.com/aurora/rmate/master/rmate
-$ sudo chmod a+x /usr/local/bin/rmate
+$ sudo wget https://raw.github.com/aurora/rmate/master/rmate
+$ sudo chmod a+x rmate
 ```
-3. In VSCode do Ctrl+P and execute the `>Remote: Start Server`
-4. Connect to VM
+3. Export PATH in VM
+4. In VSCode do Ctrl+P and execute the `>Remote: Start Server`
+5. Connect to VM
 ```
 $ ssh -R 52698:localhost:52698 VIRTUAL_MACHINE_IP_ADDRESS
 ```
-5. Open file from VM in localhost `$ rmate <filename>`
+6. Open file from VM in localhost `$ rmate <filename>`
 
 The -R option sets up a reverse tunnel. The first 52698 names a port on
 the remote. It will be connected to localhost:52698 or the same port on
