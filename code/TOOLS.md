@@ -1,16 +1,17 @@
 [⌫ back](../README.md)
 
-# Tools
+# Java
 ## JDK
-[Oracle-JDK vs OpenJDK](https://www.baeldung.com/oracle-jdk-vs-openjdk)
 
-1. Remove OpenJDK
+1. Remove default OpenJDK
 ```
 $ sudo apt-get --purge remove openjdk* && sudo apt-get autoremove && sudo apt-get clean
 ```
+2. Download
+- Oracle [here](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
+- OpenJDK [here](https://jdk.java.net/)
 
-2. Download Oracle [here](https://www.oracle.com/technetwork/java/javase/downloads/index.html)\
-Download OpenJDK [here](https://jdk.java.net/)
+### [Oracle-JDK vs OpenJDK](https://www.baeldung.com/oracle-jdk-vs-openjdk)
 
 Alt 1
 
@@ -19,31 +20,31 @@ Alt 1
 $ sudo tar -zxvf jdk-* && sudo mkdir -p /opt/java && sudo mv jdk-* /opt/java
 ```
 
-4. Install
+2. Install
 ```
 $ sudo update-alternatives --install "/usr/bin/java" "java" "/opt/java/jdk<version>/bin/java" 1
 ```
 
-5. Make system default
+3. Make system default
 ```
 $ sudo update-alternatives --set java /opt/java/jdk<version>/bin/java
 ```
 
 Alt 2
 
-3. Extract
+1. Extract
 ```
 $ sudo tar -zxvf jdk-*
 ```
 
-4. Set PATH in /etc/enviroment
+2. Set PATH in /etc/enviroment
 ```
 JAVA_HOME=<path>
 export JAVA_HOME
 ```
 
 
-4. Reload the system PATH
+3. Reload the system PATH
 ```
 $ . /etc/enviroment
 ```
@@ -54,7 +55,7 @@ Alt 3
 ```
 $ sudo add-apt-repository ppa:openjdk-r/ppa
 $ sudo apt-get update
-$ sudo apt-get install oracle-java8-installer
+$ sudo apt-get install openjdk-XX-jdk
 ```
 2. Set PATH (/usr/lib/jvm/java-XX-openjdk-amd64/)
 
@@ -108,7 +109,7 @@ export PATH=${M2_HOME}/bin:${PATH}
 $ sudo chmod +x /etc/profile.d/maven.sh && . /.maven.sh
 ```
 
-### Intellij configuration
+### Maven Intellij conf
 1. Get path to Maven 
 ```
 $ maven -v
@@ -127,6 +128,20 @@ $ sudo chmod -R 777 <folder>
 $ sudo mvn clean install
 ```
 
+## Spring Boot
+ - Init project [here](https://start.spring.io/)
+
+
+</br>
+
+
+# JavaScript
+## Node & NPM
+```
+$ sudo apt-get install curl python-software-properties
+$ curl -sL https://deb.nodesource.com/setup_11.x | sudo bash -
+$ sudo apt-get install nodejs
+```
 
 ## Vue
 ```
@@ -135,42 +150,13 @@ $ sudo apt-get install @vue/cli
 How to init
 ```
 $ vue create -d <name>
-$ npm add axios@0.18.0 vuejs-logger@1.5.3
+$ npm add axios 
+$ npm install vue-router
+$ npm add vuejs-logger
 $ npm run serve
 ```
  - axios is the package to make HTTP requests to server. 
  - vuejs-logger is a logging framework
-
-
-## Spring Boot
- - Init project [here](https://start.spring.io/)
-
-
-## Node & NPM
-```
-$ sudo apt-get install curl python-software-properties
-$ curl -sL https://deb.nodesource.com/setup_11.x | sudo bash -
-$ sudo apt-get install nodejs
-```
-
-
-## Git
-1. Save username
-```
-$ git config --global user.name <username>
-$ git config --global user.email <email>
-```
-
-2. Save login
-```
-$ git config credential.helper store
-$ git config --list
-```
-
-3. Enable credential caching for 7200sec (2h)
-```
-$ git config --global credential.helper 'cache --timeout 7200'
-```
 
 
 <br/>
@@ -234,6 +220,9 @@ Help -> Find Action -> Swtich Boot JDK
 ```
 
 ## VS Code
+### Settings json
+`$HOME/.config/Code/User/settings.json`
+
 ### List all extensions
 ```
 $ code --list-extensions | xargs -L 1 echo code --install-extension
@@ -241,15 +230,23 @@ $ code --list-extensions | xargs -L 1 echo code --install-extension
 
 ### Install current extensions
 ```
-$ code --install-extension 2gua.rainbow-brackets
-$ code --install-extension dbaeumer.vscode-eslint
-$ code --install-extension dsznajder.es7-react-js-snippets
-$ code --install-extension foxundermoon.shell-format
-$ code --install-extension JuanBlanco.solidity
-$ code --install-extension ms-python.python
-$ code --install-extension ms-vsliveshare.vsliveshare
-$ code --install-extension shd101wyy.markdown-preview-enhanced
-$ code --install-extension yzhang.markdown-all-in-one
+code --install-extension 2gua.rainbow-brackets
+code --install-extension dbaeumer.vscode-eslint
+code --install-extension dsznajder.es7-react-js-snippets
+code --install-extension foxundermoon.shell-format
+code --install-extension JuanBlanco.solidity
+code --install-extension ms-azuretools.vscode-docker
+code --install-extension ms-python.python
+code --install-extension ms-vscode.cpptools
+code --install-extension ms-vsliveshare.vsliveshare
+code --install-extension octref.vetur
+code --install-extension rafaelmaiolla.remote-vscode
+code --install-extension raynigon.nginx-formatter
+code --install-extension redhat.java
+code --install-extension shanoor.vscode-nginx
+code --install-extension shd101wyy.markdown-preview-enhanced
+code --install-extension streetsidesoftware.code-spell-checker
+code --install-extension yzhang.markdown-all-in-one
 ```
 
 **OBS** shell-format requires golang and shfmt installed
@@ -267,25 +264,50 @@ $ sudo chmod a+x rmate
 ```
 3. Export PATH in VM
 4. In VSCode do Ctrl+P and execute the `>Remote: Start Server`
-5. Connect to VM
+5. Create an ssh tunnel
 ```
-$ ssh -R 52698:localhost:52698 VIRTUAL_MACHINE_IP_ADDRESS
+$ ssh -R $PORT:localhost:$PORT VIRTUAL_MACHINE_IP_ADDRESS
 ```
-6. Open file from VM in localhost `$ rmate <filename>`
+6. Open file from VM in localhost `$ rmate -p $PORT file <filename>`
 
-The -R option sets up a reverse tunnel. The first 52698 names a port on
-the remote. It will be connected to localhost:52698 or the same port on
+The -R option sets up a reverse tunnel. The first $PORT names a port on
+the remote. It will be connected to localhost:$PORT or the same port on
 the connecting box. That port number is the default for TextMate 2 and
 rmate.
+
+- Enable opening multiple files in different VSCode tabs
+
+Uncheck `VSCode -> Settings -> Workbench>Editor:Enable Preview`
 
 
 <br/>
 
 
 # GCP
-
 ### Cloud SDK
 [Guide](https://cloud.google.com/sdk/docs/quickstart-debian-ubuntu)
 
 ### GKE
 [Guide](https://kubernetes.io/docs/setup/production-environment/turnkey/gce/)
+
+
+</br>
+
+
+# Git
+1. Save username
+```
+$ git config --global user.name <username>
+$ git config --global user.email <email>
+```
+
+2. Save login
+```
+$ git config credential.helper store
+$ git config --list
+```
+
+3. Enable credential caching for 7200sec (2h)
+```
+$ git config --global credential.helper 'cache --timeout 7200'
+```

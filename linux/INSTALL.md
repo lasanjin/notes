@@ -184,3 +184,6 @@ $ dconf-editor
  - Applets
    - *Simple Memory Monitor*
    - *System Monitor*
+ - Extensions
+   - gTile
+   - Transparent panels

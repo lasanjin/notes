@@ -23,7 +23,9 @@
 `$ find . -mindepth 2 -maxdepth 2 -type d -printf '%f\n' > $HOME/cids.txt` *Save names of subdirectories to file*\
 `sed 's/$/<ENDING>' ips.txt > new-ips.txt` **
 
+
 <br/>
+
 
 # Shortcuts
 `Ctrl`+`Alt`+`Arrow` *Move to other desktop*\
@@ -33,7 +35,9 @@
 
 More shortcuts [here](https://community.linuxmint.com/tutorial/view/244)
 
+
 <br/>
+
 
 # SSH
 
@@ -71,7 +75,9 @@ $ ssh-keygen -R <host>
 ```
 `-R <host>` removes all keys belonging to hostname from a known_hosts file. This option is useful to delete hashed hosts (see the -H option).
 
+
 <br/>
+
 
 # Crypto
 ## GPG
@@ -100,9 +106,11 @@ Decrypt message
 $ sudo gpg <encrypted-message.asc>
 ```
 
+
 <br/>
 
-# WC Command
+
+# WC
 Syntax 
 ```
 $ wc [options] filename
@@ -124,13 +132,38 @@ Outputs
 `wc -m` *Print the count of characters* \
 `wc -L` *Prints only the length of the longest line* \
 
+
 <br/>
+
 
 # Nano
 ## Commands
 `Shift` + `Insert` *Paste text copied outside of nano* \
 
+
 <br/>
+
+
+# sed
+- Remove All Except Digits (Numbers) From Input
+```
+sed 's/[^0-9]*//g' input.txt > output.txt
+sed -i 's/[^0-9]*//g' input.txt
+```
+
+
+</br>
+
+
+# awk
+- Ad number of line on each row of document
+```
+`awk '{printf("%10d %s\n", NR, $0)}' <document>`
+```
+
+
+</br>
+
 
 # Misc
 ### chmod
