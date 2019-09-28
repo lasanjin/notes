@@ -20,8 +20,7 @@
 `$ lscpu` *CPU info*\
 `$ ulimit -n` *How many files can be open at once for each CPU core*\
 `$ dpkg --list | grep compiler` *List compilers*\
-`$ find . -mindepth 2 -maxdepth 2 -type d -printf '%f\n' > $HOME/cids.txt` *Save names of subdirectories to file*\
-`sed 's/$/<ENDING>' ips.txt > new-ips.txt` **
+`$ find . -mindepth 2 -maxdepth 2 -type d -printf '%f\n' > $HOME/cids.txt` *Save names of subdirectories to file*
 
 
 <br/>
@@ -40,9 +39,7 @@ More shortcuts [here](https://community.linuxmint.com/tutorial/view/244)
 
 
 # SSH
-
 ## Connect to VM
-
 1. Generate SSH key-pair
 ```
 $ sudo ssh-keygen -t rsa
@@ -59,7 +56,6 @@ $ ssh username@hostname
 ```
 
 ## Commands
-
 Copy files to VM
 ```
 $ scp -r <file> username@ip:~/.
@@ -166,7 +162,7 @@ sed -i 's/[^0-9]*//g' input.txt
 
 
 # Misc
-### chmod
+## chmod
 <img src="fp.png" width="350">
 
 ```

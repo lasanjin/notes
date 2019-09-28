@@ -11,8 +11,6 @@
   - Installation and configurations, commands and basic security
 - [Kubernetes](code/KUBERNETES.md)
   - Installation guides, configurations, notes...
-- [Bash](code/BASH.md)
-
 
 ## Others
  - [LaTeX](others/LATEX.md)
