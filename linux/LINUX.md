@@ -20,7 +20,9 @@
 `$ lscpu` *CPU info*\
 `$ ulimit -n` *How many files can be open at once for each CPU core*\
 `$ dpkg --list | grep compiler` *List compilers*\
-`$ find . -mindepth 2 -maxdepth 2 -type d -printf '%f\n' > $HOME/cids.txt` *Save names of subdirectories to file*
+`$ find . -mindepth 2 -maxdepth 2 -type d -printf '%f\n' > <filename>` *Save names of subdirectories to file*\
+`$  cat $(ps aux | grep '[/]var/lib/NetworkManager/\S*.lease') | grep dhcp-server-identifier` *DHCP address*\
+`$ awk -F 'example' '{print $2}' h1_to_h2.txt | sed 's/[^0-9]*//g' > h1_to_h2_clean.txt` *Cut everything after 'example' and filter only numbers*
 
 
 <br/>
@@ -102,6 +104,15 @@ Decrypt message
 $ sudo gpg <encrypted-message.asc>
 ```
 
+List keys
+```
+$ sudo gpg --list-keys
+```
+
+Delete key
+```
+$ sudo gpg --delete-key <pub>
+```
 
 <br/>
 
@@ -143,8 +154,8 @@ Outputs
 # sed
 - Remove All Except Digits (Numbers) From Input
 ```
-sed 's/[^0-9]*//g' input.txt > output.txt
-sed -i 's/[^0-9]*//g' input.txt
+$ sed 's/[^0-9]*//g' input.txt > output.txt
+$ sed -i 's/[^0-9]*//g' input.txt
 ```
 
 
@@ -154,8 +165,25 @@ sed -i 's/[^0-9]*//g' input.txt
 # awk
 - Ad number of line on each row of document
 ```
-`awk '{printf("%10d %s\n", NR, $0)}' <document>`
+$ awk '{printf("%10d %s\n", NR, $0)}' <document>`
 ```
+
+
+</br>
+
+
+# grep
+- Find word in file(s)
+```
+$ grep -rnwl '/path/to/somewhere/' -e 'pattern'
+```
+- `r` is recursive,
+- `n` is line number
+- `w` is whole word
+- `l` output just the file name of matching files
+- `--include=\*.{c,h}` will search through those files which have .c or .h extensions
+- `--exclude=*.o`
+- `--exclude-dir={dir1,dir2,*.dst}`
 
 
 </br>

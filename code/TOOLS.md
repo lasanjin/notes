@@ -144,18 +144,24 @@ $ sudo apt-get install nodejs
 ```
 
 ## Vue
+1. Install
 ```
 $ sudo apt-get install @vue/cli
 ```
-How to init
+
+2. Init
 ```
-$ vue create -d <name>
+$ vue init <template> <name>
+```
+
+4. Packages
+```
 $ npm add axios 
 $ npm install vue-router
 $ npm add vuejs-logger
 $ npm run serve
 ```
- - axios is the package to make HTTP requests to server. 
+ - axios makes HTTP requests to server 
  - vuejs-logger is a logging framework
 
 
@@ -289,6 +295,14 @@ Uncheck `VSCode -> Settings -> Workbench>Editor:Enable Preview`
 
 ### GKE
 [Guide](https://kubernetes.io/docs/setup/production-environment/turnkey/gce/)
+
+
+</br>
+
+
+# Minikube
+### Installation
+[Guide](https://github.com/kubernetes/minikube/releases)
 
 
 </br>

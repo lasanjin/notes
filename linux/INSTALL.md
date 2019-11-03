@@ -178,6 +178,8 @@ $ dconf-editor
 # Others
  - Settings
    - Battery
+   - Clock
+     - `%V  %Y-%m-%d  %R`
    - Volume
    - Firewall
      - Mint default is Utf (Uncomplicated Firewall)
