@@ -208,6 +208,30 @@ $ sudo install autoconf automake libtool python
 <br/>
 
 
+# Haskell
+- [Downloads](https://www.haskell.org/downloads/) 
+- [Mint](https://www.haskell.org/platform/linux.html#linux-mint)
+  - GHC (compiler), Cabal (build tool), and some other tools, along with a starter set of libraries in a global location on your system.
+```
+$ sudo apt-get install haskell-platform
+```
+
+- GHCi: GHC’s interactive environment
+```
+$ ghci 
+```
+
+- The Haskell Tool [Stack](https://docs.haskellstack.org/en/stable/README/)
+
+- [Formatter](https://hackernoon.com/keeping-it-clean-haskell-code-formatters-32ca25c59c70)
+```
+$ stack install stylish-haskell 
+```
+
+
+<br/>
+
+
 # IDE
 ## Intellij
 - Default directory
