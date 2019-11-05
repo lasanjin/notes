@@ -261,10 +261,10 @@ $ code --list-extensions | xargs -L 1 echo code --install-extension
 ### Install current extensions
 ```
 code --install-extension 2gua.rainbow-brackets
-code --install-extension dbaeumer.vscode-eslint
-code --install-extension dsznajder.es7-react-js-snippets
+code --install-extension esbenp.prettier-vscode
 code --install-extension foxundermoon.shell-format
-code --install-extension JuanBlanco.solidity
+code --install-extension justusadam.language-haskell
+code --install-extension lunaryorn.hlint
 code --install-extension ms-azuretools.vscode-docker
 code --install-extension ms-python.python
 code --install-extension ms-vscode.cpptools
@@ -273,9 +273,18 @@ code --install-extension octref.vetur
 code --install-extension rafaelmaiolla.remote-vscode
 code --install-extension raynigon.nginx-formatter
 code --install-extension redhat.java
+code --install-extension ritwickdey.LiveServer
 code --install-extension shanoor.vscode-nginx
 code --install-extension shd101wyy.markdown-preview-enhanced
 code --install-extension streetsidesoftware.code-spell-checker
+code --install-extension vigoo.stylish-haskell
+code --install-extension VisualStudioExptTeam.vscodeintellicode
+code --install-extension vscjava.vscode-java-debug
+code --install-extension vscjava.vscode-java-dependency
+code --install-extension vscjava.vscode-java-pack
+code --install-extension vscjava.vscode-java-test
+code --install-extension vscjava.vscode-maven
+code --install-extension william-voyek.vscode-nginx
 code --install-extension yzhang.markdown-all-in-one
 ```
 
