@@ -6,8 +6,10 @@
 $ sudo add-apt-repository ppa:linrunner/tlp
 $ sudo apt-get update
 $ sudo apt-get install tlp tlp-rdw
+```
 
-Thinkpad specific:
+### Thinkpad
+```
 $ sudo apt-get install tp-smapi-dkms acpi-call-dkms
 ```
 - tlp1.

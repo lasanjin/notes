@@ -1,64 +1,14 @@
 [⌫ back](../README.md)
 
 # Java
-## JDK
-
-1. Remove default OpenJDK
-```
-$ sudo apt-get --purge remove openjdk* && sudo apt-get autoremove && sudo apt-get clean
-```
-2. Download
-- Oracle [here](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
-- OpenJDK [here](https://jdk.java.net/)
-
-### [Oracle-JDK vs OpenJDK](https://www.baeldung.com/oracle-jdk-vs-openjdk)
-
-Alt 1
-
-1. Extract, create as root directory
-```
-$ sudo tar -zxvf jdk-* && sudo mkdir -p /opt/java && sudo mv jdk-* /opt/java
-```
-
-2. Install
-```
-$ sudo update-alternatives --install "/usr/bin/java" "java" "/opt/java/jdk<version>/bin/java" 1
-```
-
-3. Make system default
-```
-$ sudo update-alternatives --set java /opt/java/jdk<version>/bin/java
-```
-
-Alt 2
-
-1. Extract
-```
-$ sudo tar -zxvf jdk-*
-```
-
-2. Set PATH in /etc/enviroment
-```
-JAVA_HOME=<path>
-export JAVA_HOME
-```
-
-
-3. Reload the system PATH
-```
-$ . /etc/enviroment
-```
-
-Alt 3
+## OpenJDK
 
 1. Install
 ```
 $ sudo add-apt-repository ppa:openjdk-r/ppa
 $ sudo apt-get update
-$ sudo apt-get install openjdk-XX-jdk
+$ sudo apt install openjdk-version-jdk
 ```
-2. Set PATH (/usr/lib/jvm/java-XX-openjdk-amd64/)
-
 
 ### List Java versions
 ```
@@ -174,29 +124,32 @@ Find path(s)
 $ which -a <python/pip>
 ```
 
-Install pip
-```
-$ sudo apt install python-pip
-```
-
 ## Python 2
+- modules
 ```
 $ sudo apt-get install python-all-dev python-wheel python-setuptools
 ```
 
- - Formatter
+- pip
+```
+$ sudo apt install python-pip
+```
+
+- autopep8
 ```
 $ python2.7 -m pip install autopep8
 ```
 
-- VSCode
-```
-$ sudo apt-get install python3-pip
-```
 
 ## Python 3
+- pip modules
 ```
 $ sudo apt-get install python3-all-dev python3-wheel python3-setuptools
+```
+
+- pip3
+```
+$ sudo apt-get install python3-pip
 ```
 
 ## Libraries
@@ -376,5 +329,5 @@ $ git config --global credential.helper 'cache --timeout 7200'
     - `$ mn --version`
 2. `$ sudo apt-get install openvswitch-testcontroller`
     - "This controller enables OpenFlow switches that connect to it to act as MAC-learning Ethernet switches. It can be used for initial testing of OpenFlow networks. It is not a necessary or desirable part of a production OpenFlow deployment." 
-3. sudo apt-get install openvswitch-switch
+3. `$ sudo apt-get install openvswitch-switch`
     - `$ ovs-vswitchd --version` 
