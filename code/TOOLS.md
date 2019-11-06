@@ -174,6 +174,11 @@ Find path(s)
 $ which -a <python/pip>
 ```
 
+Install pip
+```
+$ sudo apt install python-pip
+```
+
 ## Python 2
 ```
 $ sudo apt-get install python-all-dev python-wheel python-setuptools
@@ -182,6 +187,11 @@ $ sudo apt-get install python-all-dev python-wheel python-setuptools
  - Formatter
 ```
 $ python2.7 -m pip install autopep8
+```
+
+- VSCode
+```
+$ sudo apt-get install python3-pip
 ```
 
 ## Python 3
@@ -358,3 +368,13 @@ $ git config --list
 ```
 $ git config --global credential.helper 'cache --timeout 7200'
 ```
+
+
+
+# Mininet
+1. `$ sudo apt-get install mininet`
+    - `$ mn --version`
+2. `$ sudo apt-get install openvswitch-testcontroller`
+    - "This controller enables OpenFlow switches that connect to it to act as MAC-learning Ethernet switches. It can be used for initial testing of OpenFlow networks. It is not a necessary or desirable part of a production OpenFlow deployment." 
+3. sudo apt-get install openvswitch-switch
+    - `$ ovs-vswitchd --version` 

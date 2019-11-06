@@ -25,7 +25,7 @@ $ sudo apt-get install tp-smapi-dkms acpi-call-dkms
 ### Touchpad
 - Thinkpad Synaptics touchpad drivers
 ```
-$ xserver-xorg-input-synaptics
+$ sudo apt-get install xserver-xorg-input-synaptics
 ```
 
 ### MX Master 2S

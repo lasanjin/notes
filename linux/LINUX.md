@@ -23,7 +23,8 @@
 `$ find . -mindepth 2 -maxdepth 2 -type d -printf '%f\n' > <filename>` *Save names of subdirectories to file*\
 `$  cat $(ps aux | grep '[/]var/lib/NetworkManager/\S*.lease') | grep dhcp-server-identifier` *DHCP address*\
 `$ awk -F 'example' '{print $2}' h1_to_h2.txt | sed 's/[^0-9]*//g' > h1_to_h2_clean.txt` *Cut everything after 'example' and filter only numbers*\
-`$ echo "example.com" | cut -f1 -d"."` *Cut everything after '.'*
+`$ echo "example.com" | cut -f1 -d"."` *Cut everything after '.'*\
+`$ ps aux | grep -ie <process name> | awk '{print $2}'` list pid of process
 
 
 <br/>
