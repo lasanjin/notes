@@ -24,7 +24,8 @@
 `$  cat $(ps aux | grep '[/]var/lib/NetworkManager/\S*.lease') | grep dhcp-server-identifier` *DHCP address*\
 `$ awk -F 'example' '{print $2}' h1_to_h2.txt | sed 's/[^0-9]*//g' > h1_to_h2_clean.txt` *Cut everything after 'example' and filter only numbers*\
 `$ echo "example.com" | cut -f1 -d"."` *Cut everything after '.'*\
-`$ ps aux | grep -ie <process name> | awk '{print $2}'` list pid of process
+`$ ps aux | grep -ie <process name> | awk '{print $2}'` *list pid of process*\
+`$ xinput --list --short` *List connected devices*
 
 
 <br/>
@@ -116,6 +117,13 @@ Delete key
 $ sudo gpg --delete-key <pub>
 ```
 
+Change password to key
+```
+$ sudo gpg --edit-key <key-ID>
+$ gpg> passwd
+$ gpg> save
+```
+
 <br/>
 
 
@@ -186,6 +194,15 @@ $ grep -rnwl '/path/to/somewhere/' -e 'pattern'
 - `--include=\*.{c,h}` will search through those files which have .c or .h extensions
 - `--exclude=*.o`
 - `--exclude-dir={dir1,dir2,*.dst}`
+
+
+</br>
+
+
+# regex
+`^[0-9]+$` *Unsigned numbers* \
+`^[+-]?[0-9]+([.][0-9]+)?$` *Number with signs* \
+`^[0-9]+([.][0-9]+)?$` *Float numbers*
 
 
 </br>

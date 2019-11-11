@@ -31,9 +31,24 @@ $ sudo apt-get install xserver-xorg-input-synaptics
 ```
 
 ### MX Master 2S
+1. 
 ```
 $ apt remove blueberry -y && apt install blueman
 ```
+
+2. 
+```
+$ bluetoothctl
+Controller <MAC ADDR> <HOSTNAME> [default]
+[bluetooth]# connect <MAC ADDR>
+[bluetooth]# help
+```
+
+3. 
+```
+$ xinput --list-props <device id>
+```
+
 
 ### Codecs
 ```
@@ -122,6 +137,10 @@ $ echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo
 ```
 $ sudo apt-get install spotify-client
 ```
+- Add public-key
+```
+$ sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys <PUBLIC KEY>
+```
 
 ### JSON processor terminal
 ```
@@ -179,6 +198,8 @@ $ dconf-editor
 
 # Others
  - Settings
+   - `$ gesttings list-recursively`
+     - `gsettings set org.cinnamon.desktop.wm.preferences titlebar-font 'Noto Sans Bold 0'`
    - Battery
    - Clock
      - `%V  %Y-%m-%d  %R`
