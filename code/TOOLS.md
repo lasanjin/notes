@@ -7,21 +7,10 @@
 ```
 $ sudo add-apt-repository ppa:openjdk-r/ppa
 $ sudo apt-get update
-$ sudo apt install openjdk-version-jdk
+$ sudo apt install openjdk-<version>-jdk
 ```
 
-### List Java versions
-```
-$ sudo update-alternatives --config java
-```
-
-### Set default Java version
-1. Type in a number to select a Java version
-```
-$ sudo update-alternatives --config java
-```
-
-2. Set default Java compiler by running
+## Set Java versions
 ```
 $ sudo update-alternatives --config java
 ```
@@ -33,20 +22,14 @@ $ sudo apt install maven
 ```
 
 Alt 2
-
 1. Download [here](https://maven.apache.org/download.cgi)
 
 2. Extract
 ```
-$ sudo tar xf /tmp/apache-maven-*.tar.gz -C /opt
+$ sudo tar xf apache-maven-*.tar.gz -C /opt
 ```
 
-3. Setup enviromental variables
-```
-$ sudo <text-editor> /etc/profile.d/maven.sh
-```
-
-4. Configuration
+3. Setup enviromental variables in `/etc/profile.d/maven.sh`
 ```
 export JAVA_HOME=/usr/bin/java
 export M2_HOME=/opt/maven
@@ -54,19 +37,20 @@ export MAVEN_HOME=/opt/maven
 export PATH=${M2_HOME}/bin:${PATH}
 ```
 
-5. Make the script executable
+4. Make the script executable
 ```
-$ sudo chmod +x /etc/profile.d/maven.sh && . /.maven.sh
+$ sudo chmod +x /etc/profile.d/maven.sh
 ```
 
-### Maven Intellij conf
+### Maven Intellij configurations
 1. Get path to Maven 
 ```
 $ maven -v
 ```
 2. Change home directory
-
+```
 Settings -> Build, Execution, Deployment -> Maven -> Maven home directory
+```
 
 3. Set permission on project
 ```
@@ -99,27 +83,23 @@ $ sudo apt-get install nodejs
 $ sudo apt-get install @vue/cli
 ```
 
-2. Init
+2. Init and run
 ```
 $ vue init <template> <name>
+$ $ npm run serve
 ```
 
-4. Packages
-```
-$ npm add axios 
-$ npm install vue-router
-$ npm add vuejs-logger
-$ npm run serve
-```
- - axios makes HTTP requests to server 
- - vuejs-logger is a logging framework
+- Packages
+  - vue-router
+  - axios
+  - vuejs-logger
 
 
 <br/>
 
 
 # Python
-Find path(s)
+Find path
 ```
 $ which -a <python/pip>
 ```
@@ -154,10 +134,11 @@ $ sudo apt-get install python3-pip
 
 ## Libraries
 
-### jq
+### [jq](https://pypi.org/project/jq/)
 ```
 $ sudo python2.7 -m pip install pyjq
 ```
+
 Installation requires programs required to build jq. This includes:
  - Autoreconf
  - C compiler toolchain (gcc, make)
@@ -167,6 +148,11 @@ Installation requires programs required to build jq. This includes:
 $ sudo install autoconf automake libtool python
 ```
 
+### [mpmath](http://mpmath.org/doc/current/setup.html#download-and-installation)
+```
+$ pip install mpmath
+```
+
 
 <br/>
 
@@ -174,22 +160,25 @@ $ sudo install autoconf automake libtool python
 # Haskell
 - [Downloads](https://www.haskell.org/downloads/) 
 - [Mint](https://www.haskell.org/platform/linux.html#linux-mint)
-  - GHC (compiler), Cabal (build tool), and some other tools, along with a starter set of libraries in a global location on your system.
+  - GHC (compiler)
+  - Cabal (build tool)
+  - Some other tools along with a starter set of libraries in a global location on your system
 ```
 $ sudo apt-get install haskell-platform
 ```
 
-- GHCi: GHC’s interactive environment
+- GHCi
+  - GHC’s interactive environment
 ```
 $ ghci 
 ```
 
-- The Haskell Tool [Stack](https://docs.haskellstack.org/en/stable/README/)
+- Optional 
+  - The Haskell Tool [Stack](https://docs.haskellstack.org/en/stable/README/)
 
 - [Formatter](https://hackernoon.com/keeping-it-clean-haskell-code-formatters-32ca25c59c70)
-```
-$ stack install stylish-haskell 
-```
+  - `$ apt-get install stylish-haskell`
+  - `$ stack install stylish-haskell`
 
 
 <br/>
@@ -221,37 +210,74 @@ Help -> Find Action -> Swtich Boot JDK
 $ code --list-extensions | xargs -L 1 echo code --install-extension
 ```
 
-### Install current extensions
+### Extensions
+- Theme
 ```
-code --install-extension 2gua.rainbow-brackets
-code --install-extension esbenp.prettier-vscode
-code --install-extension foxundermoon.shell-format
+code --install-extension Equinusocio.vsc-material-theme
+```
+
+- Haskell
+```
 code --install-extension justusadam.language-haskell
-code --install-extension lunaryorn.hlint
-code --install-extension ms-azuretools.vscode-docker
-code --install-extension ms-python.python
-code --install-extension ms-vscode.cpptools
-code --install-extension ms-vsliveshare.vsliveshare
-code --install-extension octref.vetur
-code --install-extension rafaelmaiolla.remote-vscode
-code --install-extension raynigon.nginx-formatter
-code --install-extension redhat.java
-code --install-extension ritwickdey.LiveServer
-code --install-extension shanoor.vscode-nginx
-code --install-extension shd101wyy.markdown-preview-enhanced
-code --install-extension streetsidesoftware.code-spell-checker
 code --install-extension vigoo.stylish-haskell
-code --install-extension VisualStudioExptTeam.vscodeintellicode
+```
+
+- Python
+```
+code --install-extension ms-python.python
+```
+
+- Shell
+```
+code --install-extension foxundermoon.shell-format
+```
+
+- Java
+```
+code --install-extension redhat.java
 code --install-extension vscjava.vscode-java-debug
 code --install-extension vscjava.vscode-java-dependency
 code --install-extension vscjava.vscode-java-pack
 code --install-extension vscjava.vscode-java-test
 code --install-extension vscjava.vscode-maven
-code --install-extension william-voyek.vscode-nginx
-code --install-extension yzhang.markdown-all-in-one
 ```
 
-**OBS** shell-format requires golang and shfmt installed
+- Nginx
+```
+code --install-extension shanoor.vscode-nginx
+code --install-extension william-voyek.vscode-nginx
+code --install-extension raynigon.nginx-formatter
+```
+
+- Vue
+```
+code --install-extension octref.vetur
+```
+
+- cpp
+```
+code --install-extension ms-vscode.cpptools
+```
+
+- Docker
+```
+code --install-extension ms-azuretools.vscode-docker
+```
+
+- Misc
+```
+code --install-extension 2gua.rainbow-brackets
+code --install-extension esbenp.prettier-vscode
+code --install-extension lunaryorn.hlint
+code --install-extension ms-vsliveshare.vsliveshare
+code --install-extension rafaelmaiolla.remote-vscode
+code --install-extension ritwickdey.LiveServer
+code --install-extension yzhang.markdown-all-in-one
+code --install-extension shd101wyy.markdown-preview-enhanced
+code --install-extension streetsidesoftware.code-spell-checker
+```
+
+- `shell-format` requires golang and shfmt installed
 ```
 $ sudo snap install shfmt
 $ sudo snap install --classic go
@@ -272,14 +298,13 @@ $ ssh -R $PORT:localhost:$PORT VIRTUAL_MACHINE_IP_ADDRESS
 ```
 6. Open file from VM in localhost `$ rmate -p $PORT file <filename>`
 
-The -R option sets up a reverse tunnel. The first $PORT names a port on
-the remote. It will be connected to localhost:$PORT or the same port on
+The -R option sets up a reverse tunnel. The first `$PORT` names a port on
+the remote. It will be connected to `localhost:$PORT` or the same port on
 the connecting box. That port number is the default for TextMate 2 and
 rmate.
 
 - Enable opening multiple files in different VSCode tabs
-
-Uncheck `VSCode -> Settings -> Workbench>Editor:Enable Preview`
+  - Uncheck `VSCode -> Settings -> Workbench>Editor:Enable Preview`
 
 
 <br/>
@@ -322,7 +347,7 @@ $ git config --list
 $ git config --global credential.helper 'cache --timeout 7200'
 ```
 
-
+</br>
 
 # Mininet
 1. `$ sudo apt-get install mininet`

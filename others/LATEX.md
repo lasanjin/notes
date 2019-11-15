@@ -1,7 +1,5 @@
 [⌫ back](../README.md)
 
-# LaTeX
-
 ## Installation
 TeX system for Linux Mint. Read more [here](https://community.linuxmint.com/software/view/texlive-full)
 ```

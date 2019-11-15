@@ -1,7 +1,5 @@
 [⌫ back](../README.md)
 
-# NGINX
-
 ## Installation
 1. Install compiler
 ```
@@ -20,6 +18,8 @@ $ sudo apt-get install libpcre3 libpcre3-dev zlib1g-dev libssl-dev
 ```
 $ sudo ./configure --help
 ```
+
+</br>
 
 ## Configuration
  - Customize installation
@@ -79,6 +79,8 @@ $ ls -l /etc/nginx
 $ sudo apt-get install libgd-dev
 ```
 
+</br>
+
 ## systemd [configuration](https://www.nginx.com/resources/wiki/start/topics/examples/systemd/)
    - Configure path to PIDFile
    - Enable startup on boot `$ sudo systemctl enable nginx`
@@ -92,6 +94,7 @@ $ sudo apt-get install libgd-dev
 `./configure --help` *List all available modules*\
 `$ sudo nginx -t` *Test configuration*
 
+</br>
 
 ## Tools
 ### [nghttp2](https://nghttp2.org/documentation/package_README.html)
@@ -126,13 +129,7 @@ Example
 `$ htpasswd -c <path>/.htpasswd <user>` \
 -c *Write password to file*\
 
-
-## Security
-Generate DH (Diffie-Hellman) params
-
-```
-$ openssl dhparam -out <path> 2048
-```
+</br>
 
 ## Let's Encrypt
 ### Install [Cerbot](https://certbot.eff.org/)
@@ -166,3 +163,14 @@ $ crontab -e
 ```
 
 Add `@daily cerbot renew`
+
+</br>
+
+## Security
+Generate DH (Diffie-Hellman) params
+
+```
+$ openssl dhparam -out <path> 2048
+```
+
+### Test website [here](https://securityheaders.com)

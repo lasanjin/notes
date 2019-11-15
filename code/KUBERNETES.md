@@ -1,14 +1,9 @@
 [⌫ back](../README.md)
 
-# Kubernetes
-
 ## 1. GKE
 
 ### 1.1 Install Google Cloud SDK
-
 - Guide [here](https://cloud.google.com/sdk/docs/quickstart-debian-ubuntu)
-
-<br/>
 
 ### 1.2 Initialize the SDK
 ```
@@ -16,24 +11,16 @@ $ sudo gcloud init
 ```
 - Manage oauth2 ([gcloud auth](https://cloud.google.com/sdk/gcloud/reference/auth/)) credentials for the Google Cloud SDK
 
-<br/>
-
 ### 1.3 Create a cluster
 ...
 
-<br/>
-
 ### 1.4 Enable GCP APIs
-
  - Kubernetes Engine API
  - Cloud Resource Manager API (Crucial for continuous delivery with GitLab CI)
  - Identity and Access Management (IAM) API	
  - ...
 
-<br/>
-
 ### Cross Namespace communication 
-
 ```
 <service name>.<namespace name>.svc.cluster.local:PORT
 ```
@@ -41,7 +28,6 @@ $ sudo gcloud init
 - Best practices [here](https://cloud.google.com/blog/products/gcp/kubernetes-best-practices-organizing-with-namespaces)
 
 
-<br/>
 <br/>
 
 
@@ -51,15 +37,12 @@ $ sudo gcloud init
 - Guide [here](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
 
 ### 2.2 Connect kubectl to you cluster 
-
 - GCP :
 ```
 $ gcloud container clusters get-credentials <cluster-name> --zone <zone-name> --project <project-id>
 ```
 
-<br/>
-
-### kubectl commands
+### Commands
 - Cheat sheet [here](https://kubernetes.io/docs/reference/kubectl/cheatsheet/#kubectl-autocomplete)
 - Managing Resources [here](https://kubernetes.io/docs/concepts/cluster-administration/manage-deployment/)
 
@@ -76,7 +59,7 @@ $ gcloud container clusters get-credentials <cluster-name> --zone <zone-name> --
 `kubectl get secret <secret-name> -o yaml`\
 `sudo kubectl exec <pod name> -- ls -la`
 
-<br/>
+
 <br/>
 
 
@@ -86,10 +69,7 @@ $ gcloud container clusters get-credentials <cluster-name> --zone <zone-name> --
 - Operations --> Kubernetes
   - Guide [here](https://gitlab.com/help/user/project/clusters/index.md#adding-an-existing-kubernetes-cluster)
 
-<br/>
-
 ### 3.2 Automate Spring Boot application build, test and deployment on Kubernetes cluster
-
 - Gitlab guide [here](https://about.gitlab.com/2016/12/14/continuous-delivery-of-a-spring-boot-application-with-gitlab-ci-and-kubernetes/)
   - OBS
     - gcloud has configured kubectl to use the service account's credentials
@@ -103,20 +83,12 @@ $ gcloud container clusters get-credentials <cluster-name> --zone <zone-name> --
   - Additional info regarding Gitlab CI/CD environment variables and Service Account in GCP
 
 
-
-
-
-
-<br/>
 <br/>
 
 
 ## 4. Cert Manager
-
 - Documentation [here](https://docs.cert-manager.io/en/latest/index.html)
-
 - Installing Cert Manager on Kubernetes [here](https://docs.cert-manager.io/en/latest/getting-started/install/kubernetes.html)
-
 - Issuing an ACME certificate using DNS validation [here](https://docs.cert-manager.io/en/latest/tutorials/acme/dns-validation.html)
   - Certificate Duration and Renewal Window [here](https://docs.cert-manager.io/en/latest/reference/certificates.html)
     - *"When a secret being already consumed in a volume is updated, projected keys are eventually updated as well."*
@@ -124,21 +96,17 @@ $ gcloud container clusters get-credentials <cluster-name> --zone <zone-name> --
       - Documentation [here](https://kubernetes.io/docs/concepts/configuration/secret/)
   - How it works [here](https://letsencrypt.org/how-it-works/)
   - Rate limits [here](https://letsencrypt.org/docs/rate-limits/)
-
 - Configuring DNS01 Challenge Providers [here](https://docs.cert-manager.io/en/latest/tasks/issuers/setup-acme/dns01/index.html)
   - Challenge types [here](https://letsencrypt.org/docs/challenge-types/)
-
 - Google CloudDNS [here](https://docs.cert-manager.io/en/latest/tasks/issuers/setup-acme/dns01/google.html)
 
 
-<br/>
 <br/>
 
 
 ## 4. NGINX
 
 ### Custom NGINX
-
   1. Configure nginx deployment
      - Add volumes <sup>**a**</sup>
        - configMap
@@ -168,4 +136,4 @@ $ gcloud container clusters get-credentials <cluster-name> --zone <zone-name> --
 
 <br/>
 
-### Test your website [here](https://securityheaders.com)
+### Test website [here](https://securityheaders.com)

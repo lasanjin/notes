@@ -1,6 +1,6 @@
 [⌫ back](../README.md)
 
-# Drivers
+## Drivers
 ### Battery
 ```
 $ sudo add-apt-repository ppa:linrunner/tlp
@@ -31,12 +31,12 @@ $ sudo apt-get install xserver-xorg-input-synaptics
 ```
 
 ### MX Master 2S
-1. 
+- Remove Mint default and install blueman
 ```
 $ apt remove blueberry -y && apt install blueman
 ```
 
-2. 
+- Connect manually
 ```
 $ bluetoothctl
 Controller <MAC ADDR> <HOSTNAME> [default]
@@ -44,7 +44,7 @@ Controller <MAC ADDR> <HOSTNAME> [default]
 [bluetooth]# help
 ```
 
-3. 
+- Edit device settings
 ```
 $ xinput --list-props <device id>
 ```
@@ -59,7 +59,7 @@ $ sudo apt install mint-meta-codecs
 <br/>
 
 
-# Settings
+## Settings
 ### Add aliases in bashrc
 ```
 if [ -f ~/.bash_aliases ]; then
@@ -67,23 +67,22 @@ if [ -f ~/.bash_aliases ]; then
 fi
 ```
 
-### Tab auto-complete case-insensitive in Bash
+### Case-insensitive in Bash
 
-If ~/.inputrc doesn't exist yet
+- If ~/.inputrc exist
+  - Located in `/etc/inputrc`
 ```
-$ touch ~/.inputrc
 $ echo 'set completion-ignore-case On' >> ~/.inputrc
 ```
-~/.inputrc is located in `/etc/inputrc`
 
 ### Ctrl + arrow in terminal
-1. In ~/.bashrc
+-  In ~/.bashrc
 ```
 bind '"\e[1;5D" backward-word' 
 bind '"\e[1;5C" forward-word'
 ```
 
-2. In ~/.inputrc
+- In ~/.inputrc
 ```
 "\e[1;5C": forward-word
 "\e[1;5D": backward-word
@@ -94,27 +93,20 @@ bind '"\e[1;5C" forward-word'
 ```
 
 ### User run sudo
-Alt 1
+- Add user to sudo
 ```
 $ sudo adduser <username> sudo
 ```
-Alt 2
-```
-$ sudo visudo 
 
-Add <username> ALL=(ALL) NOPASSWD: ALL
-```
-[Read more](https://help.ubuntu.com/community/RootSudo#Allowing_other_users_to_run_sudo "ubuntu.com")
+- Execute commands without sudo password
+  1. Execute `$ sudo visudo `
+  2. Add `<username> ALL=(ALL) NOPASSWD: ALL`
+  - [Read more](https://help.ubuntu.com/community/RootSudo#Allowing_other_users_to_run_sudo "ubuntu.com")
 
 ### Change hostname
 ```
 $ sudo <text-editor> /etc/hostname
 $ sudo <text-editor> /etc/hosts
-```
-
-### Save and store sessions
-```
-org -> gnome -> gnome-session -> auto-save-session
 ```
 
 ### Auto-complete sudo-apt get
@@ -132,7 +124,7 @@ $ echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo
 <br/>
 
 
-# Apps
+## Apps
 ### Spotify
 ```
 $ sudo apt-get install spotify-client
@@ -160,18 +152,12 @@ $ sudo apt install peek
 ```
 
 ### Google Translate
-Alt 1 
-- Install
-```
-$ sudo apt-get install translate-shell
-```
-Alt 2 
 - Download
 ```
 $ wget git.io/trans$ sudo apt install peek
 $ chmod +x trans
 ```
-- How to use example
+- How to use
 ```
 $ ./trans -b -j -lang english -target swedish
 ```
@@ -196,10 +182,10 @@ $ dconf-editor
 <br/>
 
 
-# Others
+## Others
  - Settings
    - `$ gesttings list-recursively`
-     - `gsettings set org.cinnamon.desktop.wm.preferences titlebar-font 'Noto Sans Bold 0'`
+     - `$ gsettings set org.cinnamon.desktop.wm.preferences titlebar-font 'Noto Sans Bold 0'`
    - Battery
    - Clock
      - `%V  %Y-%m-%d  %R`
@@ -210,5 +196,5 @@ $ dconf-editor
    - *Simple Memory Monitor*
    - *System Monitor*
  - Extensions
-   - gTile
-   - Transparent panels
+   - *gTile*
+   - *Transparent panels*

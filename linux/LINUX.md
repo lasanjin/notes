@@ -1,6 +1,6 @@
 [⌫ back](../README.md)
 
-# Commands
+## Random commands
 `$ cal` *CLI calendar*\
 `$ rev <input>` *Reverse input* \
 `$ inxi -Fxz` *System info*\
@@ -12,76 +12,59 @@
 `$ tput lines` *Number of rows*\
 `$ xrandr -q` *State of system display*\
 `$ xrandr --output <monitor> --brightness 0.5` *Adjust brightness*\
-`$ gsettings get org.blueman.transfer shared-path` *get path for directory for incoming files*\
-`$ gsettings set org.blueman.transfer shared-path '<path>'` *edit path for incoming files*\
+`$ gsettings get/set org.blueman.transfer shared-path` *get/set path for directory for incoming files*\
 `$ upower -i upower -e | grep 'BAT'` *List battery info*\
-`$ tail -n 1 <file>` *Check 1 line of the end of file*\
+`$ tail -n 1 <file>` *Check 1 line at the end of file*\
 `$ lsb_release -a` *Debian/Ubuntu version*\
 `$ lscpu` *CPU info*\
 `$ ulimit -n` *How many files can be open at once for each CPU core*\
 `$ dpkg --list | grep compiler` *List compilers*\
-`$ find . -mindepth 2 -maxdepth 2 -type d -printf '%f\n' > <filename>` *Save names of subdirectories to file*\
-`$  cat $(ps aux | grep '[/]var/lib/NetworkManager/\S*.lease') | grep dhcp-server-identifier` *DHCP address*\
-`$ awk -F 'example' '{print $2}' h1_to_h2.txt | sed 's/[^0-9]*//g' > h1_to_h2_clean.txt` *Cut everything after 'example' and filter only numbers*\
+`$ cat $(ps aux | grep '[/]var/lib/NetworkManager/\S*.lease') | grep dhcp-server-identifier` *DHCP address*\
 `$ echo "example.com" | cut -f1 -d"."` *Cut everything after '.'*\
 `$ ps aux | grep -ie <process name> | awk '{print $2}'` *list pid of process*\
-`$ xinput --list --short` *List connected devices*
+`$ xinput --list --short` *List connected devices*\
+`$ sudo pkill -f <pattern>`
 
 
-<br/>
+</br>
 
-
-# Shortcuts
-`Ctrl`+`Alt`+`Arrow` *Move to other desktop*\
-`Super`+`Shift`+`Alt`+`Arrow` *Move window to other desktop*\
-`Super`+`Shift`+`Arrow` *Move window to other monitor*\
-`Shift`+`PrtCn` *Select area to grab for screenshot*
-
-More shortcuts [here](https://community.linuxmint.com/tutorial/view/244)
-
-
-<br/>
-
-
-# SSH
-## Connect to VM
+## SSH
+### Connect to VM
 1. Generate SSH key-pair
 ```
 $ sudo ssh-keygen -t rsa
 ```
 
-2. Save public-key to VM instance
+1. Get public-key
 ```
 $ cat ~/.ssh/id_rsa.pub
 ```
    
-3. Connect to VM
+1. Connect
 ```
 $ ssh username@hostname
 ```
 
-## Commands
-Copy files to VM
+### Commands
+Copy files
 ```
 $ scp -r <file> username@ip:~/.
 ```
 
-## Keygen
+### Keygen
 Read more [here](https://linux.die.net/man/1/ssh-keygen)
 
-## Warnings
+### Troubleshooting
  -  "WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED"
 ```
 $ ssh-keygen -R <host>
 ```
 `-R <host>` removes all keys belonging to hostname from a known_hosts file. This option is useful to delete hashed hosts (see the -H option).
 
+</br>
 
-<br/>
-
-
-# Crypto
-## GPG
+## Encryption
+### GPG
 Generate PGP key-pair
 ```
 $ sudo gpg --gen-key
@@ -124,16 +107,9 @@ $ gpg> passwd
 $ gpg> save
 ```
 
-<br/>
+</br>
 
-
-# WC
-Syntax 
-```
-$ wc [options] filename
-```
-No parameters
-
+## WC
 ```
 $ wc filename
 ```
@@ -142,47 +118,41 @@ Outputs
 - number of words
 - number of bytes
 
-## Args
+### Commands
 `wc -l` *Number of lines* \
 `wc -w` *Number of words* \
 `wc -c` *Count of bytes* \
 `wc -m` *Print the count of characters* \
-`wc -L` *Prints only the length of the longest line* \
-
-
-<br/>
-
-
-# Nano
-## Commands
-`Shift` + `Insert` *Paste text copied outside of nano* \
-
-
-<br/>
-
-
-# sed
-- Remove All Except Digits (Numbers) From Input
-```
-$ sed 's/[^0-9]*//g' input.txt > output.txt
-$ sed -i 's/[^0-9]*//g' input.txt
-```
-
+`wc -L` *Prints only the length of the longest line* 
 
 </br>
 
+## sed
+- Remove everything except digits 
+```
+$ sed 's/[^0-9]*//g' <file>
+```
 
-# awk
+- Read part of file
+```
+$ sed -n '<from>,<to>p' <file>
+```
+
+</br>
+
+## awk
 - Ad number of line on each row of document
 ```
 $ awk '{printf("%10d %s\n", NR, $0)}' <document>`
 ```
-
+- Cut everything after pattern in file
+```
+$ awk -F '<pattern>' '{print $2}' <file>
+```
 
 </br>
 
-
-# grep
+## grep
 - Find word in file(s)
 ```
 $ grep -rnwl '/path/to/somewhere/' -e 'pattern'
@@ -195,21 +165,36 @@ $ grep -rnwl '/path/to/somewhere/' -e 'pattern'
 - `--exclude=*.o`
 - `--exclude-dir={dir1,dir2,*.dst}`
 
+</br>
+
+## find
+- Save names of directories to file
+```
+$ find . -type d -printf '%f\n' > <file>
+```
+
+- Copy all occurences of pattern to path
+```
+$ find . -iname "*<pattern>*" -exec cp {} <path> \;
+```
 
 </br>
 
-
-# regex
+## regex
 `^[0-9]+$` *Unsigned numbers* \
 `^[+-]?[0-9]+([.][0-9]+)?$` *Number with signs* \
 `^[0-9]+([.][0-9]+)?$` *Float numbers*
 
+</br>
+
+## Nano
+### Commands
+`Shift` + `Insert` *Paste text copied outside of nano* 
 
 </br>
 
-
-# Misc
-## chmod
+## Misc
+### chmod
 <img src="fp.png" width="350">
 
 ```
