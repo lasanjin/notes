@@ -207,7 +207,7 @@ Help -> Find Action -> Swtich Boot JDK
 
 ### List all extensions
 ```
-$ code --list-extensions | xargs -L 1 echo code --install-extension
+code --list-extensions | xargs -L 1 echo code --install-extension
 ```
 
 ### Extensions
@@ -264,6 +264,11 @@ code --install-extension ms-vscode.cpptools
 code --install-extension ms-azuretools.vscode-docker
 ```
 
+- Markdown
+```
+code --install-extension yzhang.markdown-all-in-one
+```
+
 - Misc
 ```
 code --install-extension 2gua.rainbow-brackets
@@ -272,9 +277,8 @@ code --install-extension lunaryorn.hlint
 code --install-extension ms-vsliveshare.vsliveshare
 code --install-extension rafaelmaiolla.remote-vscode
 code --install-extension ritwickdey.LiveServer
-code --install-extension yzhang.markdown-all-in-one
-code --install-extension shd101wyy.markdown-preview-enhanced
 code --install-extension streetsidesoftware.code-spell-checker
+code --install-extension Gruntfuggly.triggertaskonsave
 ```
 
 - `shell-format` requires golang and shfmt installed
@@ -305,6 +309,76 @@ rmate.
 
 - Enable opening multiple files in different VSCode tabs
   - Uncheck `VSCode -> Settings -> Workbench>Editor:Enable Preview`
+
+
+### Formatting
+- Turn off formatting for part of Java code
+```java
+// @formatter:off 
+int[][] = {
+    { 1, 2, 3 }
+    { 4, 5, 6 }
+    { 7, 8, 9 }
+}
+// @formatter:on 
+```
+
+
+<br/>
+
+
+# Markdown
+## Compiling Markdown with CSS into PDF
+1. Install [Pandoc](https://pandoc.org/installing.html) and [wkhtmltopdf](https://wkhtmltopdf.org/)
+```
+$ sudo apt install pandoc
+$ sudo apt install wkhtmltopdf
+```
+
+2. Execute
+```
+$ pandoc -t html5 -c <file>.css -o <file>.pdf <file>.md
+```
+- [Variables](https://pandoc.org/MANUAL.html#variables-for-wkhtmltopdf) for wkhtmltopdf
+
+
+## [VSCode](https://code.visualstudio.com/Docs/languages/markdown)
+1. Generates a `tasks.json` file
+```json
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build-pdf",
+            "type": "shell",
+            "command": "pandoc -t html5 -c *.css -o *.pdf *.md",
+            "group": "build",
+            "problemMatcher": [],
+        }
+    ],
+}
+```
+2. Place `tasks.json` in a folder `.vscode` in your workspace
+3. Run the build task
+   - Press `Ctrl+Shift+B` -> `Run Build Task`
+
+
+### Trigger task on save
+```json
+"triggerTaskOnSave.tasks": {
+    "build-pdf": [
+        "**/*.md"
+    ]
+}
+```
+
+## [Syntax](https://daringfireball.net/projects/markdown/syntax#html)
+- Additional space
+```
+&nbsp;
+&ensp;
+&emsp;
+```
 
 
 <br/>

@@ -1,16 +1,16 @@
 ## Linux
- - [Commands & shortcuts](linux/LINUX.md)
-   - General Linux commands, short guides etc.
+ - [Commands](linux/LINUX.md)
+   - Miscellaneous Linux commands
  - [Drivers, apps & settings](linux/INSTALL.md)
-   - Personal Mint setup guides
+   - Personal Mint setup guide
 
 ## Code
-- [Tools...](code/TOOLS.md)
-  - Installation guides and configurations of different frameworks, IDEs etc.
+- [Tools](code/TOOLS.md)
+  - Guides, configurations and settings of different SDKs, frameworks, IDEs etc.
 - [NGINX](code/NGINX.md)
-  - Installation and configurations, commands and basic security
+  - How to install and config, commands and basic security
 - [Kubernetes](code/KUBERNETES.md)
-  - Installation guides, configurations, notes...
+  - Guides, configurations, notes...
 
 ## Others
  - [LaTeX](others/LATEX.md)
