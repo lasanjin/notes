@@ -7,7 +7,6 @@
    - `demo-deployment.yaml`
    - `demo-service.yaml`
    - Gitlab CI/CD environment variables
-     - Google Cloud Platform
    - `.gitlab-ci.yml.yml`
 
 </br>
