@@ -153,7 +153,7 @@ $ awk -F '<pattern>' '{print $2}' <file>
 </br>
 
 ## grep
-- Find word in file(s)
+### Find word in file(s)
 ```
 $ grep -rnwl '/path/to/somewhere/' -e 'pattern'
 ```
@@ -164,6 +164,17 @@ $ grep -rnwl '/path/to/somewhere/' -e 'pattern'
 - `--include=\*.{c,h}` will search through those files which have .c or .h extensions
 - `--exclude=*.o`
 - `--exclude-dir={dir1,dir2,*.dst}`
+
+### OR
+```
+$ grep "<pattern1>\|<pattern2>" FILE
+$ grep -e <pattern1> -e <pattern2> FILE
+```
+
+### AND
+```
+$ grep -E '<pattern1>.*<pattern2>' FILE
+```
 
 </br>
 

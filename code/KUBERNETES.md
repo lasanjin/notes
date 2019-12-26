@@ -1,139 +1,16 @@
 [⌫ back](../README.md)
 
-## 1. GKE
-
-### 1.1 Install Google Cloud SDK
-- Guide [here](https://cloud.google.com/sdk/docs/quickstart-debian-ubuntu)
-
-### 1.2 Initialize the SDK
-```
-$ sudo gcloud init
-```
-- Manage oauth2 ([gcloud auth](https://cloud.google.com/sdk/gcloud/reference/auth/)) credentials for the Google Cloud SDK
-
-### 1.3 Create a cluster
-...
-
-### 1.4 Enable GCP APIs
- - Kubernetes Engine API
- - Cloud Resource Manager API (Crucial for continuous delivery with GitLab CI)
- - Identity and Access Management (IAM) API	
- - ...
-
-### Cross Namespace communication 
-```
-<service name>.<namespace name>.svc.cluster.local:PORT
-```
-
-- Best practices [here](https://cloud.google.com/blog/products/gcp/kubernetes-best-practices-organizing-with-namespaces)
-
-
-<br/>
-
+## 1. Google Cloud Platform
+ - ### [Guide](GCP.md)
 
 ## 2. kubectl
-
-### 2.1 Install kubectl
-- Guide [here](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
-
-### 2.2 Connect kubectl to you cluster 
-- GCP :
-```
-$ gcloud container clusters get-credentials <cluster-name> --zone <zone-name> --project <project-id>
-```
-
-### Commands
-- Cheat sheet [here](https://kubernetes.io/docs/reference/kubectl/cheatsheet/#kubectl-autocomplete)
-- Managing Resources [here](https://kubernetes.io/docs/concepts/cluster-administration/manage-deployment/)
-
-`kubectl get $1 --all-namespaces -o wide`\
-`$1:`
- - deployments
- - pods
- - services
- - secrets
- - ...
-
-`kubectl logs <pod-name>`\
-`kubectl describe certificate`\
-`kubectl get secret <secret-name> -o yaml`\
-`sudo kubectl exec <pod name> -- ls -la`
-
-
-<br/>
-
+ - ### [Guide](KUBECTL.md)
 
 ## 3. Continuous delivery with GitLab CI and Kubernetes
-
-### 3.1 Add existing Kubernetes cluster to Gitlab project
-- Operations --> Kubernetes
-  - Guide [here](https://gitlab.com/help/user/project/clusters/index.md#adding-an-existing-kubernetes-cluster)
-
-### 3.2 Automate Spring Boot application build, test and deployment on Kubernetes cluster
-- Gitlab guide [here](https://about.gitlab.com/2016/12/14/continuous-delivery-of-a-spring-boot-application-with-gitlab-ci-and-kubernetes/)
-  - OBS
-    - gcloud has configured kubectl to use the service account's credentials
-      - `gcloud config set container/use_client_certificate $1`
-        - `$1:`
-          - True = makes kubectl use your cluster's client cert or basic-auth
-          - False = configures kubectl to use an OAuth2 access token from whatever Google identity is currently configured (either a logged in user from gcloud auth login or a service account).
-    - Delete secret before you create one and ignore error if there is none to delete
-      - `kubectl delete secret registry.gitlab.com --ignore-not-found=true`
-- Medium guide [here](https://medium.com/@nicklonginow/continuous-delivery-pipelines-to-google-kubernetes-engine-with-gitlab-d65e04be6c0b)
-  - Additional info regarding Gitlab CI/CD environment variables and Service Account in GCP
-
-
-<br/>
-
+ - ### [Guide](GITLAB.md)
 
 ## 4. Cert Manager
-- Documentation [here](https://docs.cert-manager.io/en/latest/index.html)
-- Installing Cert Manager on Kubernetes [here](https://docs.cert-manager.io/en/latest/getting-started/install/kubernetes.html)
-- Issuing an ACME certificate using DNS validation [here](https://docs.cert-manager.io/en/latest/tutorials/acme/dns-validation.html)
-  - Certificate Duration and Renewal Window [here](https://docs.cert-manager.io/en/latest/reference/certificates.html)
-    - *"When a secret being already consumed in a volume is updated, projected keys are eventually updated as well."*
-    - *"A container using a Secret as a subPath volume mount will not receive Secret updates."*
-      - Documentation [here](https://kubernetes.io/docs/concepts/configuration/secret/)
-  - How it works [here](https://letsencrypt.org/how-it-works/)
-  - Rate limits [here](https://letsencrypt.org/docs/rate-limits/)
-- Configuring DNS01 Challenge Providers [here](https://docs.cert-manager.io/en/latest/tasks/issuers/setup-acme/dns01/index.html)
-  - Challenge types [here](https://letsencrypt.org/docs/challenge-types/)
-- Google CloudDNS [here](https://docs.cert-manager.io/en/latest/tasks/issuers/setup-acme/dns01/google.html)
+ - ### [Guide](CERT-MANAGER.md)
 
-
-<br/>
-
-
-## 4. NGINX
-
-### Custom NGINX
-  1. Configure nginx deployment
-     - Add volumes <sup>**a**</sup>
-       - configMap
-         - Custom nginx configuration
-       - secrets
-         - keys <sup>**b**</sup>
-         - dhparam <sup>**c**</sup>
-  2. Configure nginx service (LoadBalancer) for external http and https traffic
-     - Reserve static IP
-     - Setup DNS for custom domain name (Optional)
-  3. Configure configMap
-     - Add custom nginx configuration
-
-<br/>
-
-- **a**
-  - You must create a Secret/ConfigMap before you can use it
-  - A container using a Secret/ConfigMap as a subPath volume mount will not receive Secret/ConfigMap updates
-- **b**
-  - Generated by ACME certificate before deployment, see Cert Manager guide
-- **c**
-  - Generate DH parameters with at least 2048 bits. DH parameters should match your TLS certificate. Cert Manager ACME default is 2048-bit RSA. Documentation [here](http://docs.cert-manager.io/en/master/reference/api-docs/index.html#-strong-cert-manager-strong-)
-  - Steps:
-    1. `$ sudo openssl dhparam -out dhparam.pem 2048`
-    2. `$ sudo kubectl create secret generic <secret name> --from-file=dhparam.pem`
-    3. Mount to separate directory, `/etc/nginx/dhparam`
-
-<br/>
-
-### Test website [here](https://securityheaders.com)
+## 5. NGINX
+ - ### [Guide](NGINX-KUBERNETES.md)

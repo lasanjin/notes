@@ -179,6 +179,8 @@ $ ghci
 - [Formatter](https://hackernoon.com/keeping-it-clean-haskell-code-formatters-32ca25c59c70)
   - `$ apt-get install stylish-haskell`
   - `$ stack install stylish-haskell`
+- [Hlint](https://hackage.haskell.org/package/hlint)
+  - `$ cabal install hlint`
 
 
 <br/>
