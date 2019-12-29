@@ -23,12 +23,18 @@
 `$ echo "example.com" | cut -f1 -d"."` *Cut everything after '.'*\
 `$ ps aux | grep -ie <process name> | awk '{print $2}'` *list pid of process*\
 `$ xinput --list --short` *List connected devices*\
-`$ sudo pkill -f <pattern>`
-
+`$ sudo pkill -f <pattern>`\
+`mkdir -p folder/{1..100}/{sub1,sub2,sub3}` *Creates combinatorial folder nest. Works with ranges {1..100}*\
+`$ disown -a` *Exit terminal & leave processes running*
 
 </br>
 
 ## SSH
+### Tunnel
+```
+$ ssh -L <local port>:<remote host IP>:<remote host port> root@<host> -N
+```
+
 ### Connect to VM
 1. Generate SSH key-pair
 ```
@@ -205,6 +211,17 @@ $ find . -iname "*<pattern>*" -exec cp {} <path> \;
 </br>
 
 ## Misc
+### Create RAM disk
+1. Create directory for disk
+```
+$ mkdir -p <directory>
+```
+
+2. Mount the RAM disk
+```
+$ mount -t tmpfs tmpfs <directory> -o size=8192M
+```
+
 ### chmod
 <img src="fp.png" width="350">
 

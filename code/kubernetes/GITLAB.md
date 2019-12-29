@@ -1,4 +1,4 @@
-[⌫ back](KUBERNETES.md)
+[⌫ back](../KUBERNETES.md)
 
 ## Automate Spring Boot application build, test and deployment on Kubernetes cluster
  - [Source](https://about.gitlab.com/blog/2016/12/14/continuous-delivery-of-a-spring-boot-application-with-gitlab-ci-and-kubernetes/)
@@ -100,7 +100,7 @@ spec:
        1. Create key, select JSON and save the file locally
        2. Paste the entire contents of the JSON file into the box next to the variable and save
           - Enable the pipeline in Gitlab to execute commands against the Kubernetes cluster. It represents a service account in Google Cloud Platform which is authorized to do specific actions relative to the Kubernetes cluster
-     - `$REGISTRY_USER`
+     - `REGISTRY_USER`
         - Username to the Gitlab repository where the Docker containers are stored
      - `REGISTRY_PASSWD`
         - Password to the Gitlab repository

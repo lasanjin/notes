@@ -1,4 +1,4 @@
-[⌫ back](KUBERNETES.md)
+[⌫ back](../KUBERNETES.md)
 
 ## Custom NGINX
 ### 1. Configure nginx deployment
