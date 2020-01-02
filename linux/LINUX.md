@@ -23,9 +23,10 @@
 `$ echo "example.com" | cut -f1 -d"."` *Cut everything after '.'*\
 `$ ps aux | grep -ie <process name> | awk '{print $2}'` *list pid of process*\
 `$ xinput --list --short` *List connected devices*\
-`$ sudo pkill -f <pattern>`\
+`$ sudo pkill -f <pattern>` *Kill all occurences of pattern*\
 `mkdir -p folder/{1..100}/{sub1,sub2,sub3}` *Creates combinatorial folder nest. Works with ranges {1..100}*\
-`$ disown -a` *Exit terminal & leave processes running*
+`$ disown -a` *Exit terminal & leave processes running*\
+`if ls -U <files> &>/dev/null; then` *files do exist: ls returns non-zero when the files do not exist*
 
 </br>
 
@@ -139,6 +140,11 @@ Outputs
 $ sed 's/[^0-9]*//g' <file>
 ```
 
+ - Cut everything before last occurence of pattern
+```
+$ sed 's/.*\<pattern>//'
+```
+
 - Read part of file
 ```
 $ sed -n '<from>,<to>p' <file>
@@ -151,7 +157,7 @@ $ sed -n '<from>,<to>p' <file>
 ```
 $ awk '{printf("%10d %s\n", NR, $0)}' <document>`
 ```
-- Cut everything after pattern in file
+- Cut everything before second occurence of pattern in file
 ```
 $ awk -F '<pattern>' '{print $2}' <file>
 ```
@@ -201,6 +207,17 @@ $ find . -iname "*<pattern>*" -exec cp {} <path> \;
 `^[0-9]+$` *Unsigned numbers* \
 `^[+-]?[0-9]+([.][0-9]+)?$` *Number with signs* \
 `^[0-9]+([.][0-9]+)?$` *Float numbers*
+
+</br>
+
+## sort 
+ - sort files in order
+   - n: sorts numerically
+   - t: field separator '-'
+   - k: sort on second field (the numbers after the first '-') 
+```
+$ ls data-* | sort -n -t - -k 2
+```
 
 </br>
 

@@ -1,3 +1,6 @@
+# Notes
+My notes :)
+
 ## Linux
  - [Commands](linux/LINUX.md)
    - Miscellaneous Linux commands
