@@ -132,6 +132,29 @@ $ sudo apt-get install python3-all-dev python3-wheel python3-setuptools
 $ sudo apt-get install python3-pip
 ```
 
+
+## Handle versions
+ - List versions
+```
+$ ls /usr/bin/python*
+```
+
+### Change python version system-wide
+ 1. Update alternatives table and include several python versions
+   - `--install` option takes multiple arguments and creates a symbolic link
+     - `1` and `2` specifies priority, i.e. if no manual alternative selection is made the alternative with the highest priority number is set
+```
+$ sudo update-alternatives --install /usr/bin/python python /usr/bin/python2.7 1
+$ sudo update-alternatives --install /usr/bin/python python /usr/bin/python3.6 2
+```
+
+ 2. Set version
+```
+$ update-alternatives --config python
+```
+
+
+
 ## Libraries
 
 ### [jq](https://pypi.org/project/jq/)
@@ -171,6 +194,11 @@ $ sudo apt-get install haskell-platform
   - GHC’s interactive environment
 ```
 $ ghci 
+```
+
+- Compile & run
+```
+$ ghc --make <filename> && ./filename
 ```
 
 - Optional 
