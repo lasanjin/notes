@@ -1,13 +1,14 @@
 [⌫ back](../KUBERNETES.md)
 
-## Automate Spring Boot application build, test and deployment on Kubernetes cluster
- - [Source](https://about.gitlab.com/blog/2016/12/14/continuous-delivery-of-a-spring-boot-application-with-gitlab-ci-and-kubernetes/)
- - Output
-   - `Dockerfile`
-   - `demo-deployment.yaml`
-   - `demo-service.yaml`
-   - Gitlab CI/CD environment variables
-   - `.gitlab-ci.yml.yml`
+## Automate Spring Boot application on Kubernetes cluster
+A compressed and slightly modified guide from [source](https://about.gitlab.com/blog/2016/12/14/continuous-delivery-of-a-spring-boot-application-with-gitlab-ci-and-kubernetes/) on how to create a Spring Boot application (built, tested, and deployed) with GitLab CI on a Kubernetes cluster.
+
+Output
+- `Dockerfile`
+- `demo-deployment.yaml`
+- `demo-service.yaml`
+- Gitlab CI/CD environment variables
+- `.gitlab-ci.yml.yml`
 
 </br>
 

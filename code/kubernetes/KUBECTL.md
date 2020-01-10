@@ -1,24 +1,27 @@
 [⌫ back](../KUBERNETES.md)
 
 ## kubectl
+kubectl is the Kubernetes command-line tool which allows you to run commands against Kubernetes clusters. It can be used to deploy applications, inspect and manage cluster resources and view logs.
 
-### 2.1 [Install kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
-1. Download the latest release
+</br>
+
+### 1. [Install kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
+1.1 Download the latest release
 ```
 $ curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
 ```
 
-2. Make the kubectl binary executable
+1.2 Make the kubectl binary executable
 ```
 $ chmod +x ./kubectl
 ```
 
-1. Move the binary in to PATH
+1.3 Move the binary in to PATH
 ```
 $ sudo mv ./kubectl /usr/local/bin/kubectl
 ```
 
-### 2.2 Connect kubectl to you cluster 
+### 2. Connect kubectl to you cluster 
 ```
 $ gcloud container clusters get-credentials <cluster-name> --zone <zone-name> --project <project-id>
 ```

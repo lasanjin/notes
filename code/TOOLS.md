@@ -205,10 +205,11 @@ $ ghc --make <filename> && ./filename
   - The Haskell Tool [Stack](https://docs.haskellstack.org/en/stable/README/)
 
 - [Formatter](https://hackernoon.com/keeping-it-clean-haskell-code-formatters-32ca25c59c70)
-  - `$ apt-get install stylish-haskell`
+  - `$ apt-get install stylish-haskell` (recommended)
   - `$ stack install stylish-haskell`
 - [Hlint](https://hackage.haskell.org/package/hlint)
-  - `$ cabal install hlint`
+  1. `$ cabal update`
+  2. `$ cabal install hlint`
 
 
 <br/>

@@ -142,12 +142,17 @@ $ sed 's/[^0-9]*//g' <file>
 
  - Cut everything before last occurence of pattern
 ```
-$ sed 's/.*\<pattern>//'
+$ sed 's/<pattern>.*//'
 ```
 
 - Read part of file
 ```
 $ sed -n '<from>,<to>p' <file>
+```
+
+ - Delete everything before last pattern
+```
+$ sed 's@.*<pattern>@@'
 ```
 
 </br>
@@ -167,15 +172,15 @@ $ awk -F '<pattern>' '{print $2}' <file>
 ## grep
 ### Find word in file(s)
 ```
-$ grep -rnwl '/path/to/somewhere/' -e 'pattern'
+$ grep -rnwl '<path>' -e '<pattern>'
 ```
 - `r` is recursive,
 - `n` is line number
 - `w` is whole word
 - `l` output just the file name of matching files
-- `--include=\*.{c,h}` will search through those files which have .c or .h extensions
-- `--exclude=*.o`
-- `--exclude-dir={dir1,dir2,*.dst}`
+- `--include=\*.{c,h}` will search through files with `.c` or `.h` extensions
+- `--exclude=*.o` will exclude searching all files with `.o` extension:
+- `--exclude-dir={dir1,dir2,*.dst}` will exclude all directories dir1, dir2 and all them matching `.dst`
 
 ### OR
 ```

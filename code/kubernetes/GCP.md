@@ -1,6 +1,9 @@
 [⌫ back](../KUBERNETES.md)
 
 ## Google Cloud Platform
+Google Cloud SDK is a set of tools that you can use to manage resources and applications hosted on Google Cloud Platform. It is however **not necessary** to install. Everything can be done from a web browser in the [console](https://console.cloud.google.com/)
+
+The gcloud CLI is a part of the Google Cloud SDK. You must download and install the SDK on your system and initialize it before you can use the gcloud command-line tool.
 
 ### 1.1 [Install Google Cloud SDK](https://cloud.google.com/sdk/docs/quickstart-debian-ubuntu)
 1. Add the Cloud SDK distribution URI as a package source
