@@ -248,6 +248,7 @@ $ ls data-* | sort -n -t - -k 2
  - `udev` is a device manager for the Linux kernel, primarily managing device nodes in the /dev directory.  It also handles all user space events raised when hardware devices are added into the system or removed from it, including firmware loading as required by certain devices.
  - `udevadm` is udev management tool.
 
+
 ### Commands
  - List system rules
 ```
@@ -257,6 +258,11 @@ $ ls /lib/udev/rules.d/
  - Reload rules
 ```
 $ sudo udevadm control --reload-rules
+```
+
+ - List `card0` device attributes
+```
+$ udevadm info -a -p $(udevadm info -q path -n /dev/dri/card0)
 ```
 
  - Query `AC` device info stored in the udev database and properties of a device from its sysfs representation
@@ -269,15 +275,6 @@ $ udevadm info /sys/class/power_supply/AC
 $ udevadm info -a -p $(udevadm info -q path /sys/class/power_supply/AC)
 ```
 
- - List `card0` device attributes
-```
-`$ udevadm info -a -p $(udevadm info -q path -n /dev/dri/card0)
-```
-
- - List connected `usb` device attributes
-```
-$ udevadm info -q all -n /dev/sdb | grep -E -i -w '.*VENDOR_ID.*|.*MODEL_ID.*'
-```
 
 ### rules
  1. List connected `usb` device attributes and properties
