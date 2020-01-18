@@ -8,9 +8,10 @@
 `$ locale -a` *List the installed locales which will work for the LC_ALL variable*\
 `$ LC_TIME=sv_SE.utf-8 date '+%A'` *Get today in Swedish*\
 `$ sudo dpkg -r <package>` *Install debian package*\
+`$ sudo apt-add-repository --remove <ppa>` *Remove ppa*\
 `$ tput cols` *Number of columns*\
 `$ tput lines` *Number of rows*\
-`$ xrandr -q` *State of system display*\
+`$ xrandr -qt` *State of system display*\
 `$ xrandr --output <monitor> --brightness 0.5` *Adjust brightness*\
 `$ gsettings get/set org.blueman.transfer shared-path` *get/set path for directory for incoming files*\
 `$ upower -i upower -e | grep 'BAT'` *List battery info*\
@@ -24,9 +25,15 @@
 `$ ps aux | grep -ie <process name> | awk '{print $2}'` *list pid of process*\
 `$ xinput --list --short` *List connected devices*\
 `$ sudo pkill -f <pattern>` *Kill all occurences of pattern*\
-`mkdir -p folder/{1..100}/{sub1,sub2,sub3}` *Creates combinatorial folder nest. Works with ranges {1..100}*\
+`$ mkdir -p folder/{1..100}/{sub1,sub2,sub3}` *Creates combinatorial folder nest. Works with ranges {1..100}*\
 `$ disown -a` *Exit terminal & leave processes running*\
-`if ls -U <files> &>/dev/null; then` *files do exist: ls returns non-zero when the files do not exist*
+`if ls -U <files> &>/dev/null; then` *files do exist: ls returns non-zero when the files do not exist* \
+`$ sudo lshw -class disk` *list all disks on the system* \
+`$ ls -l /lib/modules/$(uname -r)/` *List Linux modules* \
+`$ lsmod` *List loaded Linux modules* \
+`$ cat /proc/acpi/button/lid/LID/state` *Check if lid is open/closed* \
+`$ sudo rtcwake -m no -l -t "$(date --date='60 seconds' +%s)"` *Schedule system wakeup 1min from now*
+
 
 </br>
 
@@ -59,7 +66,7 @@ $ scp -r <file> username@ip:~/.
 ```
 
 ### Keygen
-Read more [here](https://linux.die.net/man/1/ssh-keygen)
+ - [ssh-keygen man page](https://linux.die.net/man/1/ssh-keygen)
 
 ### Troubleshooting
  -  "WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED"
@@ -206,6 +213,11 @@ $ find . -type d -printf '%f\n' > <file>
 $ find . -iname "*<pattern>*" -exec cp {} <path> \;
 ```
 
+ - Delete all occurences of pattern
+```
+$ find -iname "*<pattern>*" -delete
+```
+
 </br>
 
 ## regex
@@ -228,7 +240,72 @@ $ ls data-* | sort -n -t - -k 2
 
 ## Nano
 ### Commands
-`Shift` + `Insert` *Paste text copied outside of nano* 
+`Shift+Insert` *Paste text copied outside of nano* 
+
+</br>
+
+## [udev](https://en.wikipedia.org/wiki/Udev)
+ - `udev` is a device manager for the Linux kernel, primarily managing device nodes in the /dev directory.  It also handles all user space events raised when hardware devices are added into the system or removed from it, including firmware loading as required by certain devices.
+ - `udevadm` is udev management tool.
+
+### Commands
+ - List system rules
+```
+$ ls /lib/udev/rules.d/
+```
+
+ - Reload rules
+```
+$ sudo udevadm control --reload-rules
+```
+
+ - Query `AC` device info stored in the udev database and properties of a device from its sysfs representation
+```
+$ udevadm info /sys/class/power_supply/AC
+```
+
+ - List `AC` device attributes
+```
+$ udevadm info -a -p $(udevadm info -q path /sys/class/power_supply/AC)
+```
+
+ - List `card0` device attributes
+```
+`$ udevadm info -a -p $(udevadm info -q path -n /dev/dri/card0)
+```
+
+ - List connected `usb` device attributes
+```
+$ udevadm info -q all -n /dev/sdb | grep -E -i -w '.*VENDOR_ID.*|.*MODEL_ID.*'
+```
+
+### rules
+ 1. List connected `usb` device attributes and properties
+```
+$ udevadm info -q all -n /dev/sdb | grep -E -i -w '.*VENDOR_ID.*|.*MODEL_ID.*'
+```
+
+ 2. Create rule and place in `/etc/udev/rules.d/`
+```
+ACTION=="add", ATTRS{idVendor}=="<VENDOR_ID>", ATTRS{idProduct}=="<MODEL_ID", RUN+="<path>/script.sh"
+```
+
+ 3. Create `script.sh`
+```
+#!/bin/bash
+
+<do something>
+```
+
+ 1. Make is executable and place in `<path>`
+```
+$ chmod +x script.sh
+```
+
+ 5. Reload rules
+```
+$ udevadm control --reload-rules
+```
 
 </br>
 
@@ -244,7 +321,7 @@ $ mkdir -p <directory>
 $ mount -t tmpfs tmpfs <directory> -o size=8192M
 ```
 
-### chmod
+### Permissions
 <img src="fp.png" width="350">
 
 ```
@@ -259,3 +336,16 @@ rw- = 110 in binary = 6
 r-x = 101 in binary = 5
 r-- = 100 in binary = 4
 ```
+
+ - Change the user owning file or directory
+```
+$ sudo chown <username>: <directory>
+```
+
+ - Add write permission to username user
+```
+$ sudo chmod u+w <files>
+```
+
+
+

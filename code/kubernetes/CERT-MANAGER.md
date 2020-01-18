@@ -94,7 +94,7 @@ metadata:
   namespace: default
 spec:
   #If successful, the resulting key and certificate will be 
-  #stored in a secret with keys of tls.key and tls.crt respectively
+  #stored in a secret: tls.key and tls.crt
   secretName: acme-certificate-secret
   #Automatic renewal every 90 days (2160h)
   renewBefore: 1920h #Renew every 10th day

@@ -162,7 +162,7 @@ k8s-deploy:
 
 - **`stages`**
   - Defines the lifecycle of the build
-  - Each job us associated with one [stage](https://docs.gitlab.com/ee/ci/yaml/#stages)
+  - Each job is associated with one [stage](https://docs.gitlab.com/ee/ci/yaml/#stages)
     - All jobs within a stage are run in parallel and stages are triggered sequentially in the order they are defined
       - The next stage is initiated only when the previous one is complete
 - **`variables`**

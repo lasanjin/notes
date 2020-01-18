@@ -12,7 +12,8 @@ $ sudo apt-get install texmaker
 ```
  - [Shortcuts](https://shortcutworld.com/Texmaker/win/Texmaker_4.0.2_Shortcuts)
 
-## Horizontal space
+## Syntax
+### Horizontal space
 `$\quad$`\
 `$\qquad$`\
 `$\hspace{100pt}$`

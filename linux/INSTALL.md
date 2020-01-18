@@ -30,7 +30,7 @@ $ sudo apt-get install tp-smapi-dkms acpi-call-dkms
 $ sudo apt-get install xserver-xorg-input-synaptics
 ```
 
-### MX Master 2S
+### MX Master
 - Remove Mint default and install blueman
 ```
 $ apt remove blueberry -y && apt install blueman
@@ -56,11 +56,11 @@ $ sudo apt install mint-meta-codecs
 ```
 
 
-<br/>
+</br>
 
 
 ## Settings
-### Add aliases in bashrc
+### Add aliases & scripts to bashrc
 ```
 if [ -f ~/.bash_aliases ]; then
     source ~/.bash_aliases
@@ -69,20 +69,20 @@ fi
 
 ### Case-insensitive in Bash
 
-- If ~/.inputrc exist
+- If `~/.inputrc` exist
   - Located in `/etc/inputrc`
 ```
 $ echo 'set completion-ignore-case On' >> ~/.inputrc
 ```
 
-### Ctrl + arrow in terminal
--  In ~/.bashrc
+### `Ctrl+arrow` in terminal
+-  In `~/.bashrc`
 ```
 bind '"\e[1;5D" backward-word' 
 bind '"\e[1;5C" forward-word'
 ```
 
-- In ~/.inputrc
+- In `~/.inputrc`
 ```
 "\e[1;5C": forward-word
 "\e[1;5D": backward-word
@@ -121,7 +121,7 @@ $ echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo
 [Read more](https://github.com/guard/listen/wiki/Increasing-the-amount-of-inotify-watchers#the-technical-details "github.com")
 
 
-<br/>
+</br>
 
 
 ## Apps
@@ -148,7 +148,7 @@ $ sudo apt-get install neofetch
 ### Peek
 ```
 $ sudo add-apt-repository ppa:peek-developers/stable
-$ sudo apt install peek
+$ sudo apt-get install peek
 ```
 
 ### Google Translate
@@ -178,8 +178,13 @@ $ sudo apt-get install dconf-tools
 $ dconf-editor
 ```
 
+### Kazam
+```
+$ sudo apt install kazam
+```
 
-<br/>
+
+</br>
 
 
 ## Others
