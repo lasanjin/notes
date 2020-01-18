@@ -34,7 +34,6 @@
 `$ cat /proc/acpi/button/lid/LID/state` *Check if lid is open/closed* \
 `$ sudo rtcwake -m no -l -t "$(date --date='60 seconds' +%s)"` *Schedule system wakeup 1min from now*
 
-
 </br>
 
 ## SSH
@@ -284,10 +283,10 @@ $ udevadm info -q all -n /dev/sdb | grep -E -i -w '.*VENDOR_ID.*|.*MODEL_ID.*'
 
  2. Create rule and place in `/etc/udev/rules.d/`
 ```
-ACTION=="add", ATTRS{idVendor}=="<VENDOR_ID>", ATTRS{idProduct}=="<MODEL_ID", RUN+="<path>/script.sh"
+ACTION=="add", ATTRS{idVendor}=="<VENDOR_ID>", ATTRS{idProduct}=="<MODEL_ID", RUN+="<path>/script"
 ```
 
- 3. Create `script.sh`
+ 3. Create `script`
 ```
 #!/bin/bash
 
@@ -296,7 +295,7 @@ ACTION=="add", ATTRS{idVendor}=="<VENDOR_ID>", ATTRS{idProduct}=="<MODEL_ID", RU
 
  1. Make is executable and place in `<path>`
 ```
-$ chmod +x script.sh
+$ chmod +x script
 ```
 
  5. Reload rules
