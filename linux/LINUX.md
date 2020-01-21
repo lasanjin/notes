@@ -32,7 +32,8 @@
 `$ ls -l /lib/modules/$(uname -r)/` *List Linux modules* \
 `$ lsmod` *List loaded Linux modules* \
 `$ cat /proc/acpi/button/lid/LID/state` *Check if lid is open/closed* \
-`$ sudo rtcwake -m no -l -t "$(date --date='60 seconds' +%s)"` *Schedule system wakeup 1min from now*
+`$ sudo rtcwake -m no -l -t "$(date --date='60 seconds' +%s)"` *Schedule system wakeup 1min from now* \
+`$ hostnamectl` *Check Linux version*
 
 </br>
 
@@ -303,7 +304,47 @@ $ chmod +x script
 $ udevadm control --reload-rules
 ```
 
+
 </br>
+
+
+## VirtualBox 6.0 on Linux Mint 19
+1. Import public key
+```
+$ wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -
+```
+
+2. Add repository
+```
+$ echo "deb [arch=amd64] http://download.virtualbox.org/virtualbox/debian bionic contrib" | sudo tee /etc/apt/sources.list.d/virtualbox.list
+```
+
+3. Update apt cache & install
+```
+$ sudo apt-get update && sudo apt-get install -y virtualbox-6.0
+```
+
+
+</br>
+
+
+## Ghostscript
+ - Merge pdf
+   - Preserve hyperlinks ( [Markdown + CSS $\rightarrow$ PDF](../code/TOOLS#Markdown "Markdown") ) 
+     - `a:link { text-decoration: none; }`
+```
+$ ghostscript \
+      -sDEVICE=pdfwrite \
+      -dPrinted=false \
+      -dNOPAUSE -dQUIET -dBATCH \
+      -sOutputFile=combined.pdf \
+      file1.pdf \
+      file2.pdf
+```
+
+
+</br>
+
 
 ## Misc
 ### Create RAM disk
