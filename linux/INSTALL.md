@@ -49,6 +49,11 @@ Controller <MAC ADDR> <HOSTNAME> [default]
 $ xinput --list-props <device id>
 ```
 
+ - Set the minimum/maximum latency for the mouse 
+```
+$ sudo cat /var/lib/bluetooth/<MAC-addr-adapter>/<MAC-addr-mouse>/info
+```
+
 
 ### Codecs
 ```

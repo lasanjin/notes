@@ -354,6 +354,11 @@ int[][] = {
 // @formatter:on 
 ```
 
+- Curly braces on same line in C/C++
+   1. Preferences -> Settings
+   2. Search for `C_Cpp.clang_format_fallbackStyle`
+   3. Change to `{ BasedOnStyle: Google, IndentWidth: 4, ColumnLimit: 0 }`
+
 
 <br/>
 

@@ -282,12 +282,12 @@ $ udevadm info -a -p $(udevadm info -q path /sys/class/power_supply/AC)
 $ udevadm info -q all -n /dev/sdb | grep -E -i -w '.*VENDOR_ID.*|.*MODEL_ID.*'
 ```
 
- 2. Create rule and place in `/etc/udev/rules.d/`
+ 2. Create rule and place in `/etc/udev/rules.d/<name>.rules`
 ```
 ACTION=="add", ATTRS{idVendor}=="<VENDOR_ID>", ATTRS{idProduct}=="<MODEL_ID", RUN+="<path>/script"
 ```
 
- 3. Create `script`
+ 1. Create `script`
 ```
 #!/bin/bash
 
@@ -303,6 +303,21 @@ $ chmod +x script
 ```
 $ udevadm control --reload-rules
 ```
+
+
+</br>
+
+
+## wget
+ - Download all PDF files located on a webpage
+   - `r` recursively download every file
+   - `-A.pdf` download only PDF files
+```
+$ wget -r -A.pdf <URL>
+```
+
+## Flags
+ - `-l1` specifies to go one level down from the primary URL specified
 
 
 </br>
@@ -330,9 +345,9 @@ $ sudo apt-get update && sudo apt-get install -y virtualbox-6.0
 
 ## Ghostscript
  - Merge pdf
-   - Preserve hyperlinks ( [Markdown + CSS $\rightarrow$ PDF](../code/TOOLS#Markdown "Markdown") ) 
+   - Preserve hyperlinks ( [Markdown + CSS ![\rightarrow](https://render.githubusercontent.com/render/math?math=%5Crightarrow) PDF](../code/TOOLS.md#Markdown) ) 
      - `a:link { text-decoration: none; }`
-```
+```bash
 $ ghostscript \
       -sDEVICE=pdfwrite \
       -dPrinted=false \
@@ -362,9 +377,9 @@ $ mount -t tmpfs tmpfs <directory> -o size=8192M
 <img src="fp.png" width="350">
 
 ```
-rwx rwx rwx = 111 111 111
-rw- rw- rw- = 110 110 110
-rwx --- --- = 111 000 000
+rwx rwx rwx = 111 111 111 = 777
+rw- rw- rw- = 110 110 110 = 666
+rwx --- --- = 111 000 000 = 700
 ```
 
 ```
@@ -372,17 +387,51 @@ rwx = 111 in binary = 7
 rw- = 110 in binary = 6
 r-x = 101 in binary = 5
 r-- = 100 in binary = 4
+-wx = 100 in binary = 3
+-w- = 100 in binary = 2
+--x = 100 in binary = 1
+--- = 000 in binary = 0
 ```
 
- - Change the user owning file or directory
+ - Change owner of directory
 ```
 $ sudo chown <username>: <directory>
 ```
 
- - Add write permission to username user
+ - Add read+write+execute permission to username user
 ```
-$ sudo chmod u+w <files>
+$ sudo chmod u+rwx <files>
 ```
 
+ - Set the sticky bit
+   - Limit users ability to delete files in directory
+   - `ls -ld <directory>`
+     - `drwxrwx--T`
+       - `T` denotes that the directory is **not** "other-executable" but has the sticky bit set
+     - `drwxrwx--t`
+       - `t` denotes that the directory is "other-executable" and has the sticky bit set
+```
+$ chmod +t <directory>
 
+drwxrwx--T
+```
 
+ - setuid
+   - Run program as its owner no matter who executes it
+   - No effect on directories
+```
+$ chmod +s <file>
+```
+
+ - setgid
+   - Run program as a member of the group that owns it regardless of who executes it
+   - Setting a directory's setgid bit causes any file created in that directory to inherit the directory's group-owner
+```
+$ chmod g+s <file>
+```
+
+ - `chmod wxzy`
+   - `w`: special permission
+     - `4`: setuid
+     - `2`: setgid
+     - `1`: sticky bit
