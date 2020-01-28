@@ -141,8 +141,8 @@ $ ls /usr/bin/python*
 
 ### Change python version system-wide
  1. Update alternatives table and include several python versions
-   - `--install` option takes multiple arguments and creates a symbolic link
-     - `1` and `2` specifies priority, i.e. if no manual alternative selection is made the alternative with the highest priority number is set
+    - `--install` option takes multiple arguments and creates a symbolic link
+    - `1` and `2` specifies priority, i.e. if no manual alternative selection is made the alternative with the highest priority number is set
 ```
 $ sudo update-alternatives --install /usr/bin/python python /usr/bin/python2.7 1
 $ sudo update-alternatives --install /usr/bin/python python /usr/bin/python3.6 2
@@ -162,11 +162,11 @@ $ update-alternatives --config python
 $ sudo python2.7 -m pip install pyjq
 ```
 
-Installation requires programs required to build jq. This includes:
- - Autoreconf
- - C compiler toolchain (gcc, make)
- - libtool
- - Python headers
+ - Installation requires programs required to build jq. This includes:
+   - Autoreconf
+   - C compiler toolchain (gcc, make)
+   - libtool
+   - Python headers
 ```
 $ sudo install autoconf automake libtool python
 ```
@@ -318,28 +318,29 @@ $ sudo snap install shfmt
 $ sudo snap install --classic go
 ```
 
-### Remote VSCode
+### Remote VSCode ([rmate](https://github.com/aurora/rmate))
 1. Install the extension and re-launch VSCode
-2. In VM install rmate
+2. Install rmate in VM
 ```
 $ sudo wget https://raw.github.com/aurora/rmate/master/rmate
 $ sudo chmod a+x rmate
 ```
 3. Export PATH in VM
-4. In VSCode do Ctrl+P and execute the `>Remote: Start Server`
+4. In VSCode do `Ctrl+P` and execute `>Remote: Start Server`
 5. Create an ssh tunnel
+   - `-R` option sets up a reverse tunnel
+   - The first `$PORT` names a port on the remote
+     - It will be connected to `localhost:$PORT` or the same port on the connecting box
+       - That port number is the default for TextMate 2 and rmate
 ```
 $ ssh -R $PORT:localhost:$PORT VIRTUAL_MACHINE_IP_ADDRESS
 ```
-6. Open file from VM in localhost `$ rmate -p $PORT file <filename>`
+1. Open file from VM in localhost `$ rmate -p $PORT file <filename>`
 
-The -R option sets up a reverse tunnel. The first `$PORT` names a port on
-the remote. It will be connected to `localhost:$PORT` or the same port on
-the connecting box. That port number is the default for TextMate 2 and
-rmate.
 
-- Enable opening multiple files in different VSCode tabs
-  - Uncheck `VSCode -> Settings -> Workbench>Editor:Enable Preview`
+
+2. Enable opening multiple files in different VSCode tabs
+   - Uncheck `VSCode -> Settings -> Workbench>Editor:Enable Preview`
 
 
 ### Formatting
@@ -417,25 +418,6 @@ $ pandoc -t html5 -c <file>.css -o <file>.pdf <file>.md
 ```
 
 
-<br/>
-
-
-# GCP
-### Cloud SDK
-[Guide](https://cloud.google.com/sdk/docs/quickstart-debian-ubuntu)
-
-### GKE
-[Guide](https://kubernetes.io/docs/setup/production-environment/turnkey/gce/)
-
-
-</br>
-
-
-# Minikube
-### Installation
-[Guide](https://github.com/kubernetes/minikube/releases)
-
-
 </br>
 
 
@@ -457,7 +439,9 @@ $ git config --list
 $ git config --global credential.helper 'cache --timeout 7200'
 ```
 
+
 </br>
+
 
 # Mininet
 1. `$ sudo apt-get install mininet`
@@ -466,3 +450,17 @@ $ git config --global credential.helper 'cache --timeout 7200'
     - "This controller enables OpenFlow switches that connect to it to act as MAC-learning Ethernet switches. It can be used for initial testing of OpenFlow networks. It is not a necessary or desirable part of a production OpenFlow deployment." 
 3. `$ sudo apt-get install openvswitch-switch`
     - `$ ovs-vswitchd --version` 
+
+
+<br/>
+
+
+# [GCP](kubernetes/GCP)
+
+
+</br>
+
+
+# Minikube
+### Installation
+[Guide](https://github.com/kubernetes/minikube/releases)

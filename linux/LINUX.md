@@ -49,12 +49,12 @@ $ ssh -L <local port>:<remote host IP>:<remote host port> root@<host> -N
 $ sudo ssh-keygen -t rsa
 ```
 
-1. Get public-key
+2. Get public-key
 ```
 $ cat ~/.ssh/id_rsa.pub
 ```
    
-1. Connect
+3. Connect
 ```
 $ ssh username@hostname
 ```
@@ -316,7 +316,7 @@ $ udevadm control --reload-rules
 $ wget -r -A.pdf <URL>
 ```
 
-## Flags
+### Flags
  - `-l1` specifies to go one level down from the primary URL specified
 
 
@@ -345,7 +345,7 @@ $ sudo apt-get update && sudo apt-get install -y virtualbox-6.0
 
 ## Ghostscript
  - Merge pdf
-   - Preserve hyperlinks ( [Markdown + CSS ![\rightarrow](https://render.githubusercontent.com/render/math?math=%5Crightarrow) PDF](../code/TOOLS.md#Markdown) ) 
+   - Preserve hyperlinks and remove underline ([Markdown + CSS![\rightarrow](https://render.githubusercontent.com/render/math?math=%5Crightarrow)PDF](../code/TOOLS.md#Markdown))
      - `a:link { text-decoration: none; }`
 ```bash
 $ ghostscript \

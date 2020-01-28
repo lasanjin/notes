@@ -132,7 +132,7 @@ Example
 </br>
 
 ## Let's Encrypt
-### Install [Cerbot](https://certbot.eff.org/)
+### Install [Certbot](https://certbot.eff.org/)
 
 Alt 1
 
