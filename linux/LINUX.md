@@ -21,7 +21,7 @@
 `$ ulimit -n` *How many files can be open at once for each CPU core*\
 `$ dpkg --list | grep compiler` *List compilers*\
 `$ cat $(ps aux | grep '[/]var/lib/NetworkManager/\S*.lease') | grep dhcp-server-identifier` *DHCP address*\
-`$ echo "example.com" | cut -f1 -d"."` *Cut everything after '.'*\
+`$ echo "example.com" | cut -f1 -d"."` *Cut everything after '.', including '.'*\
 `$ ps aux | grep -ie <process name> | awk '{print $2}'` *list pid of process*\
 `$ xinput --list --short` *List connected devices*\
 `$ sudo pkill -f <pattern>` *Kill all occurences of pattern*\
@@ -120,6 +120,16 @@ $ sudo gpg --edit-key <key-ID>
 $ gpg> passwd
 $ gpg> save
 ```
+
+### OpenSSL
+ - SHA512 with salt
+   - Output: `$id$salt$encrypted`
+     - `$id`: Encryption method (-6)
+       - `openssl passwd --help` for available methods
+```
+$ openssl passwrd -6 -salt <YOUR_SALT>
+```
+
 
 </br>
 
@@ -275,7 +285,6 @@ $ udevadm info /sys/class/power_supply/AC
 $ udevadm info -a -p $(udevadm info -q path /sys/class/power_supply/AC)
 ```
 
-
 ### rules
  1. List connected `usb` device attributes and properties
 ```
@@ -304,9 +313,7 @@ $ chmod +x script
 $ udevadm control --reload-rules
 ```
 
-
 </br>
-
 
 ## wget
  - Download all PDF files located on a webpage
@@ -319,9 +326,7 @@ $ wget -r -A.pdf <URL>
 ### Flags
  - `-l1` specifies to go one level down from the primary URL specified
 
-
 </br>
-
 
 ## VirtualBox 6.0 on Linux Mint 19
 1. Import public key
@@ -339,9 +344,7 @@ $ echo "deb [arch=amd64] http://download.virtualbox.org/virtualbox/debian bionic
 $ sudo apt-get update && sudo apt-get install -y virtualbox-6.0
 ```
 
-
 </br>
-
 
 ## Ghostscript
  - Merge pdf
@@ -357,9 +360,11 @@ $ ghostscript \
       file2.pdf
 ```
 
-
 </br>
 
+## [chkrootkit](https://linoxide.com/linux-how-to/install-chkrootkit-linux/)
+
+</br>
 
 ## Misc
 ### Create RAM disk
@@ -371,6 +376,22 @@ $ mkdir -p <directory>
 2. Mount the RAM disk
 ```
 $ mount -t tmpfs tmpfs <directory> -o size=8192M
+```
+
+### Mount ISO files
+1. Create mount point
+```
+$ sudo mkdir /media/iso
+```
+
+2. Mount the ISO file to the mount point
+```
+$ sudo mount <path>/image.iso /media/iso
+```
+
+3. Unmount
+```
+$ sudo umount /media/iso
 ```
 
 ### Permissions
@@ -431,7 +452,7 @@ $ chmod g+s <file>
 ```
 
  - `chmod wxzy`
-   - `w`: special permission
+   - `w`: special permission (SUID/SGID)
      - `4`: setuid
      - `2`: setgid
      - `1`: sticky bit

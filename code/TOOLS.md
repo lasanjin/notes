@@ -360,6 +360,11 @@ int[][] = {
    2. Search for `C_Cpp.clang_format_fallbackStyle`
    3. Change to `{ BasedOnStyle: Google, IndentWidth: 4, ColumnLimit: 0 }`
 
+### Hide file extensions
+ - Go to `Settings` & search `files:exclude`
+   - Java
+      - `**/*.class` 
+
 
 <br/>
 
