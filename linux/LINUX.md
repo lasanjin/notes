@@ -94,6 +94,16 @@ Import public key
 $ sudo gpg --import <public-key-file>
 ```
 
+Sign file
+```
+$ sudo gpg --sign <file>
+```
+
+Sign key
+```
+$ sudo gpg --sign-key <email@address.com>
+```
+
 Encrypt message
 ```
 $ sudo gpg --encrypt --armor --recipient <email@address.com> <message-file>
