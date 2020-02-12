@@ -78,55 +78,72 @@ $ ssh-keygen -R <host>
 </br>
 
 ## Encryption
-### GPG
+### [GPG](https://gnupg.org/documentation/manpage.html)
 Generate PGP key-pair
+ - `gpg --version` to list supported algorithms
 ```
-$ sudo gpg --gen-key
+$ gpg --default-new-key-algo rsa4096 --gen-key
 ```
 
 Export public key
 ```
-$ sudo gpg --armor --export <email@address.com> > public-key.asc
+$ gpg --armor --export <key-ID> > public-key.asc
 ```
 
 Import public key
 ```
-$ sudo gpg --import <public-key-file>
+$ gpg --import <public-key-file>
 ```
 
 Sign file
 ```
-$ sudo gpg --sign <file>
+$ gpg --sign <file>
 ```
 
 Sign key
 ```
-$ sudo gpg --sign-key <email@address.com>
+$ gpg -default-key <my-key-ID> --sign-key <other-key-ID>
+```
+
+List signed keys
+```
+$ gpg --list-sig
 ```
 
 Encrypt message
 ```
-$ sudo gpg --encrypt --armor --recipient <email@address.com> <message-file>
+$ gpg --encrypt --armor --recipient <key-ID> <file>
 ```
 
 Decrypt message
 ```
-$ sudo gpg <encrypted-message.asc>
+$ gpg <encrypted-message.asc>
 ```
 
 List keys
 ```
-$ sudo gpg --list-keys
+$ gpg --list-keys
+```
+
+List keys for which you have both a public and private key
+```
+$ gpg --list-secret-keys --keyid-format LONG
 ```
 
 Delete key
 ```
-$ sudo gpg --delete-key <pub>
+$ gpg --delete-key <pub>
+```
+
+Edit key
+```
+$ --list-key
+$ gpg> help
 ```
 
 Change password to key
 ```
-$ sudo gpg --edit-key <key-ID>
+$ gpg --edit-key <key-ID>
 $ gpg> passwd
 $ gpg> save
 ```
