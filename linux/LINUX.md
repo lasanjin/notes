@@ -102,7 +102,7 @@ $ gpg --sign <file>
 
 Sign key
 ```
-$ gpg -default-key <my-key-ID> --sign-key <other-key-ID>
+$ gpg --default-key <my-key-ID> --sign-key <other-key-ID>
 ```
 
 List signed keys
@@ -137,15 +137,8 @@ $ gpg --delete-key <pub>
 
 Edit key
 ```
-$ --list-key
-$ gpg> help
-```
-
-Change password to key
-```
 $ gpg --edit-key <key-ID>
-$ gpg> passwd
-$ gpg> save
+$ gpg> help
 ```
 
 ### OpenSSL
