@@ -33,7 +33,10 @@
 `$ lsmod` *List loaded Linux modules* \
 `$ cat /proc/acpi/button/lid/LID/state` *Check if lid is open/closed* \
 `$ sudo rtcwake -m no -l -t "$(date --date='60 seconds' +%s)"` *Schedule system wakeup 1min from now* \
-`$ hostnamectl` *Check Linux version*
+`$ hostnamectl` *Check Linux version* \
+`$ ls -l | wc -l` *Count number of files in directory* \
+`$ sudo du -sch *` *List size of files in directory* \
+`$ unzip '*.zip'` *Unzip all zip files in directory*
 
 </br>
 
@@ -336,11 +339,19 @@ $ udevadm control --reload-rules
 </br>
 
 ## wget
- - Download all PDF files located on a webpage
+ - Download all **PDF** files on webpage
    - `r` recursively download every file
    - `-A.pdf` download only PDF files
+     -  Comma-separated list of accepted extensions
 ```
 $ wget -r -A.pdf <URL>
+```
+
+ - Download all **zip** files on webpage
+   - `np` don't ascend to the parent directory
+   - `-l` maximum recursion depth (`inf` or `0` for infinite)
+```
+$ wget -r -np -l 1 -A zip <URL>
 ```
 
 ### Flags

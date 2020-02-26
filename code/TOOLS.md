@@ -10,9 +10,15 @@ $ sudo apt-get update
 $ sudo apt install openjdk-<version>-jdk
 ```
 
-## Set Java versions
+## Set version
+### Java
 ```
 $ sudo update-alternatives --config java
+```
+
+### Javac
+```
+$ sudo update-alternatives --config javac
 ```
 
 ## Maven
@@ -71,8 +77,26 @@ $ sudo mvn clean install
 
 # JavaScript
 ## Node & NPM
+1. Install the dependencies (probably got most of these)
 ```
-$ sudo apt-get install curl python-software-properties
+$ sudo apt-get install g++ curl libssl-dev apache2-utils python-software-properties
+```
+
+2. Clone the node git repo
+```
+$ git clone git://github.com/ry/node.git
+```
+
+3. Install
+```
+$ cd node
+$ ./configure
+$ make
+$ sudo make install
+```
+
+1. Install via package manager
+```
 $ curl -sL https://deb.nodesource.com/setup_11.x | sudo bash -
 $ sudo apt-get install nodejs
 ```

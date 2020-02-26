@@ -198,7 +198,7 @@ $ sudo apt install kazam
      - `$ gsettings set org.cinnamon.desktop.wm.preferences titlebar-font 'Noto Sans Bold 0'`
    - Battery
    - Clock
-     - `%V  %Y-%m-%d  %R`
+     - `%V  •  %Y-%m-%d  •  %R:%S`
    - Volume
    - Firewall
      - Mint default is Utf (Uncomplicated Firewall)
