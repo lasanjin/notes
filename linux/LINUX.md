@@ -391,6 +391,17 @@ $ ghostscript \
       file2.pdf
 ```
 
+ - Delete pages from pdf
+```bash
+$ gs \
+      -sDEVICE=pdfwrite \
+      -dNOPAUSE -dQUIET -dBATCH \
+      -dFirstPage=m \
+      -dLastPage=n \
+      -sOutputFile=output.pdf \
+      input.pdf
+```
+
 </br>
 
 ## [chkrootkit](https://linoxide.com/linux-how-to/install-chkrootkit-linux/)

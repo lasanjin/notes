@@ -342,6 +342,7 @@ $ sudo snap install shfmt
 $ sudo snap install --classic go
 ```
 
+
 ### Remote VSCode ([rmate](https://github.com/aurora/rmate))
 1. Install the extension and re-launch VSCode
 2. Install rmate in VM
@@ -361,8 +362,6 @@ $ ssh -R $PORT:localhost:$PORT VIRTUAL_MACHINE_IP_ADDRESS
 ```
 1. Open file from VM in localhost `$ rmate -p $PORT file <filename>`
 
-
-
 2. Enable opening multiple files in different VSCode tabs
    - Uncheck `VSCode -> Settings -> Workbench>Editor:Enable Preview`
 
@@ -379,10 +378,11 @@ int[][] = {
 // @formatter:on 
 ```
 
-- Curly braces on same line in C/C++
-   1. Preferences -> Settings
-   2. Search for `C_Cpp.clang_format_fallbackStyle`
-   3. Change to `{ BasedOnStyle: Google, IndentWidth: 4, ColumnLimit: 0 }`
+- Curly braces `{ }` on same line in C/C++
+   1. `Preferences -> Settings`
+   2. Search for: `C_Cpp.clang_format_fallbackStyle`
+      - Change to: `{ BasedOnStyle: Google, IndentWidth: 4, ColumnLimit: 0 }`
+
 
 ### Hide file extensions
  - Go to `Settings` & search `files:exclude`
