@@ -13,7 +13,7 @@
 `$ tput lines` *Number of rows*\
 `$ xrandr -qt` *State of system display*\
 `$ xrandr --output <monitor> --brightness 0.5` *Adjust brightness*\
-`$ gsettings get/set org.blueman.transfer shared-path` *get/set path for directory for incoming files*\
+`$ cat ~/.config/user-dirs.dirs` *List paths for default directories*\
 `$ upower -i upower -e | grep 'BAT'` *List battery info*\
 `$ tail -n 1 <file>` *Check 1 line at the end of file*\
 `$ lsb_release -a` *Debian/Ubuntu version*\
@@ -38,13 +38,16 @@
 `$ sudo du -sch *` *List size of files in directory* \
 `$ unzip '*.zip'` *Unzip all zip files in directory*
 
+
 </br>
+
 
 ## SSH
 ### Tunnel
 ```
 $ ssh -L <local port>:<remote host IP>:<remote host port> root@<host> -N
 ```
+
 
 ### Connect to VM
 1. Generate SSH key-pair
@@ -62,14 +65,17 @@ $ cat ~/.ssh/id_rsa.pub
 $ ssh username@hostname
 ```
 
+
 ### Commands
 Copy files
 ```
 $ scp -r <file> username@ip:~/.
 ```
 
+
 ### Keygen
  - [ssh-keygen man page](https://linux.die.net/man/1/ssh-keygen)
+
 
 ### Troubleshooting
  -  "WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED"
@@ -78,7 +84,9 @@ $ ssh-keygen -R <host>
 ```
 `-R <host>` removes all keys belonging to hostname from a known_hosts file. This option is useful to delete hashed hosts (see the -H option).
 
+
 </br>
+
 
 ## Encryption
 ### [GPG](https://gnupg.org/documentation/manpage.html)
@@ -144,6 +152,7 @@ $ gpg --edit-key <key-ID>
 $ gpg> help
 ```
 
+
 ### OpenSSL
  - SHA512 with salt
    - Output: `$id$salt$encrypted`
@@ -156,6 +165,7 @@ $ openssl passwrd -6 -salt <YOUR_SALT>
 
 </br>
 
+
 ## WC
 ```
 $ wc filename
@@ -165,6 +175,7 @@ Outputs
 - number of words
 - number of bytes
 
+
 ### Commands
 `wc -l` *Number of lines* \
 `wc -w` *Number of words* \
@@ -172,7 +183,9 @@ Outputs
 `wc -m` *Print the count of characters* \
 `wc -L` *Prints only the length of the longest line* 
 
+
 </br>
+
 
 ## sed
 - Remove everything except digits 
@@ -195,7 +208,9 @@ $ sed -n '<from>,<to>p' <file>
 $ sed 's@.*<pattern>@@'
 ```
 
+
 </br>
+
 
 ## awk
 - Ad number of line on each row of document
@@ -207,7 +222,9 @@ $ awk '{printf("%10d %s\n", NR, $0)}' <document>`
 $ awk -F '<pattern>' '{print $2}' <file>
 ```
 
+
 </br>
+
 
 ## grep
 ### Find word in file(s)
@@ -222,18 +239,22 @@ $ grep -rnwl '<path>' -e '<pattern>'
 - `--exclude=*.o` will exclude searching all files with `.o` extension:
 - `--exclude-dir={dir1,dir2,*.dst}` will exclude all directories dir1, dir2 and all them matching `.dst`
 
+
 ### OR
 ```
 $ grep "<pattern1>\|<pattern2>" FILE
 $ grep -e <pattern1> -e <pattern2> FILE
 ```
 
+
 ### AND
 ```
 $ grep -E '<pattern1>.*<pattern2>' FILE
 ```
 
+
 </br>
+
 
 ## find
 - Save names of directories to file
@@ -251,14 +272,18 @@ $ find . -iname "*<pattern>*" -exec cp {} <path> \;
 $ find -iname "*<pattern>*" -delete
 ```
 
+
 </br>
+
 
 ## regex
 `^[0-9]+$` *Unsigned numbers* \
 `^[+-]?[0-9]+([.][0-9]+)?$` *Number with signs* \
 `^[0-9]+([.][0-9]+)?$` *Float numbers*
 
+
 </br>
+
 
 ## sort 
  - sort files in order
@@ -269,17 +294,22 @@ $ find -iname "*<pattern>*" -delete
 $ ls data-* | sort -n -t - -k 2
 ```
 
+
 </br>
+
 
 ## Nano
 ### Commands
 `Shift+Insert` *Paste text copied outside of nano* 
 
+
 </br>
+
 
 ## [udev](https://en.wikipedia.org/wiki/Udev)
  - `udev` is a device manager for the Linux kernel, primarily managing device nodes in the /dev directory.  It also handles all user space events raised when hardware devices are added into the system or removed from it, including firmware loading as required by certain devices.
  - `udevadm` is udev management tool.
+
 
 
 ### Commands
@@ -307,6 +337,7 @@ $ udevadm info /sys/class/power_supply/AC
 ```
 $ udevadm info -a -p $(udevadm info -q path /sys/class/power_supply/AC)
 ```
+
 
 ### rules
  1. List connected `usb` device attributes and properties
@@ -336,7 +367,9 @@ $ chmod +x script
 $ udevadm control --reload-rules
 ```
 
+
 </br>
+
 
 ## wget
  - Download all **PDF** files on webpage
@@ -357,7 +390,9 @@ $ wget -r -np -l 1 -A zip <URL>
 ### Flags
  - `-l1` specifies to go one level down from the primary URL specified
 
+
 </br>
+
 
 ## VirtualBox 6.0 on Linux Mint 19
 1. Import public key
@@ -375,7 +410,9 @@ $ echo "deb [arch=amd64] http://download.virtualbox.org/virtualbox/debian bionic
 $ sudo apt-get update && sudo apt-get install -y virtualbox-6.0
 ```
 
+
 </br>
+
 
 ## Ghostscript
  - Merge pdf
@@ -402,13 +439,41 @@ $ gs \
       input.pdf
 ```
 
+
 </br>
+
 
 ## [chkrootkit](https://linoxide.com/linux-how-to/install-chkrootkit-linux/)
 
+
 </br>
 
+
 ## Misc
+### Write .iso to a bootable USB
+1. Find usb device name
+```
+$ df -h
+```
+
+2. Create bootable USB
+```
+$ sudo dd status=progress if=/path/<file.iso> of=/dev/<usb-device-name>
+```
+
+
+### [Zipsplit](https://www.computerhope.com/unix/zipsplit.htm)
+1. Output # files it will take to perform the split
+```
+$ zipsplit -t archive.zip
+```
+
+2. Split an archive
+```
+$ zipsplit -n <MB-size> archive.zip
+```
+
+
 ### Create RAM disk
 1. Create directory for disk
 ```
@@ -419,6 +484,7 @@ $ mkdir -p <directory>
 ```
 $ mount -t tmpfs tmpfs <directory> -o size=8192M
 ```
+
 
 ### Mount ISO files
 1. Create mount point
@@ -435,6 +501,7 @@ $ sudo mount <path>/image.iso /media/iso
 ```
 $ sudo umount /media/iso
 ```
+
 
 ### Permissions
 <img src="fp.png" width="350">

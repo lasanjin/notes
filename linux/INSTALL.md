@@ -1,6 +1,17 @@
 [⌫ back](../README.md)
 
 ## Drivers
+### List installed packages
+```
+$ dpkg --get-selections
+```
+
+### [X Window server](https://wiki.debian.org/Xorg)
+```
+$ apt-cache search xserver-xorg
+```
+
+
 ### Battery
 ```
 $ sudo add-apt-repository ppa:linrunner/tlp
@@ -27,7 +38,7 @@ $ sudo apt-get install tp-smapi-dkms acpi-call-dkms
 ### Touchpad
 - Thinkpad Synaptics touchpad drivers
 ```
-$ sudo apt-get install xserver-xorg-input-synaptics
+$ sudo apt-get install xserver-xorg-input-synaptics-hwe-18.04
 ```
 
 ### MX Master
@@ -114,7 +125,7 @@ $ sudo <text-editor> /etc/hostname
 $ sudo <text-editor> /etc/hosts
 ```
 
-### Auto-complete sudo-apt get
+### Bash autocomplete
 ```
 $ sudo apt-get install bash-completion
 ```
@@ -124,6 +135,38 @@ $ sudo apt-get install bash-completion
 $ echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
 ```
 [Read more](https://github.com/guard/listen/wiki/Increasing-the-amount-of-inotify-watchers#the-technical-details "github.com")
+
+
+</br>
+
+
+## Misc
+ - Backing up and restoring your Cinnamon settings
+   - dconf
+     - `dconf dump /org/cinnamon/ > cinnamon_settings`
+     - `dconf load /org/cinnamon/ < cinnamon_settings`
+   - cp `~/.cinnamon/configs`
+   - cp `~/.configs/...`
+     - `caja`
+     - `gtk-3.0`
+     - `qt5ct`
+     - `user-dirs.dirs`
+ - Settings
+   - `$ gesttings list-recursively`
+     - `$ gsettings set org.cinnamon.desktop.wm.preferences titlebar-font 'Noto Sans Bold 0'`
+   - Battery
+   - Clock
+     - `  %V  •  %Y-%m-%d  •  %R:%S`
+   - Volume
+   - Firewall
+   - Menu icon: `menu-none`
+   - Default directories
+     - `~/.config/user-dirs.dirs`
+ - Applets
+   - *Simple Memory Monitor*
+   - *System Monitor*
+ - Extensions
+   - *Transparent panels*
 
 
 </br>
@@ -187,24 +230,3 @@ $ dconf-editor
 ```
 $ sudo apt install kazam
 ```
-
-
-</br>
-
-
-## Others
- - Settings
-   - `$ gesttings list-recursively`
-     - `$ gsettings set org.cinnamon.desktop.wm.preferences titlebar-font 'Noto Sans Bold 0'`
-   - Battery
-   - Clock
-     - `%V  •  %Y-%m-%d  •  %R:%S`
-   - Volume
-   - Firewall
-     - Mint default is Utf (Uncomplicated Firewall)
- - Applets
-   - *Simple Memory Monitor*
-   - *System Monitor*
- - Extensions
-   - *gTile*
-   - *Transparent panels*
