@@ -92,8 +92,9 @@ $ ssh-keygen -R <host>
 ### [GPG](https://gnupg.org/documentation/manpage.html)
 Generate PGP key-pair
  - `gpg --version` to list supported algorithms
+   - [`rsa4096` gives almost nothing, while costing quite a lot](https://gnupg.org/faq/gnupg-faq.html#rsa2048_in_the_real_world) 
 ```
-$ gpg --default-new-key-algo rsa4096 --gen-key
+$ gpg --full-gen-key
 ```
 
 Export public key
@@ -152,6 +153,11 @@ $ gpg --edit-key <key-ID>
 $ gpg> help
 ```
 
+Sign and encrypt file
+```
+$ sudo gpg --default-key <my-key-ID> --encrypt --sign --armor --recipient <key-ID> <file>
+```
+
 
 ### OpenSSL
  - SHA512 with salt
@@ -206,6 +212,11 @@ $ sed -n '<from>,<to>p' <file>
  - Delete everything before last pattern
 ```
 $ sed 's@.*<pattern>@@'
+```
+
+ - Remove special character
+```
+$ sed 's/\<special-character>//g'
 ```
 
 
@@ -365,6 +376,18 @@ $ chmod +x script
  5. Reload rules
 ```
 $ udevadm control --reload-rules
+```
+
+
+</br>
+
+
+## nmap
+ - Host discovery
+   -  If IP: `192.168.1.x` and the subnet mask: `255.255.255.0` then ip address range on network varies from `192.168.1.0` to `192.168.1.255`
+   -  `/24` is [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#targetText=CIDR%20notation%20is%20a%20compact,bits%20in%20the%20subnet%20mask.) notation (Basically scanning from `192.168.1.0` to `192.168.1.255`)
+```
+$ sudo nmap -sn 192.168.0.1/24
 ```
 
 

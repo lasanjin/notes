@@ -72,6 +72,20 @@ $ sudo apt install mint-meta-codecs
 ```
 
 
+### Printer
+1. Make sure CUPS daemon is running
+```
+$ lpstat -r
+```
+
+2. Start CUPS daemon
+   - Default `cups.conf` file
+     - cupsd post install copies the file `/usr/share/cups/cupsd.conf.default` to `/etc/cups/cupsd.conf`
+```
+$ sudo /etc/init.d/cups start
+```
+
+
 </br>
 
 
@@ -173,13 +187,11 @@ $ echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo
 
 
 ## Apps
-### Spotify
+### [Spotify](https://www.spotify.com/nl/download/linux/)
 ```
-$ sudo apt-get install spotify-client
-```
-- Add public-key
-```
-$ sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys <PUBLIC KEY>
+$ curl -sS https://download.spotify.com/debian/pubkey.gpg | sudo apt-key add - 
+$ echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
+$ sudo apt-get update && sudo apt-get install spotify-client
 ```
 
 ### JSON processor terminal
