@@ -49,21 +49,17 @@ $ sudo chmod +x /etc/profile.d/maven.sh
 ```
 
 ### Maven Intellij configurations
-1. Get path to Maven 
-```
-$ maven -v
-```
-2. Change home directory
+1. Change home directory
 ```
 Settings -> Build, Execution, Deployment -> Maven -> Maven home directory
 ```
 
-3. Set permission on project
+2. Set permission on project
 ```
 $ sudo chmod -R 777 <folder>
 ```
 
-4. Build project manually
+3. Build project manually
 ```
 $ sudo mvn clean install
 ```
