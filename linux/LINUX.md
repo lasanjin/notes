@@ -36,7 +36,8 @@
 `$ hostnamectl` *Check Linux version* \
 `$ ls -l | wc -l` *Count number of files in directory* \
 `$ sudo du -sch *` *List size of files in directory* \
-`$ unzip '*.zip'` *Unzip all zip files in directory*
+`$ unzip '*.zip'` *Unzip all zip files in directory* \
+`$ sudo nmap -n -PN -sT -sU -p- localhost` *Scan all open/listening ports*
 
 
 </br>
@@ -324,14 +325,14 @@ $ ls data-* | sort -n -t - -k 2
 
 
 ### Commands
+ - Monitor received events for `UDEV` and `KERNEL`
+```
+$ sudo udevadm monitor
+```
+
  - List system rules
 ```
 $ ls /lib/udev/rules.d/
-```
-
- - Reload rules
-```
-$ sudo udevadm control --reload-rules
 ```
 
  - List `card0` device attributes
@@ -361,14 +362,14 @@ $ udevadm info -q all -n /dev/sdb | grep -E -i -w '.*VENDOR_ID.*|.*MODEL_ID.*'
 ACTION=="add", ATTRS{idVendor}=="<VENDOR_ID>", ATTRS{idProduct}=="<MODEL_ID", RUN+="<path>/script"
 ```
 
- 1. Create `script`
+ 3. Create `script`
 ```
 #!/bin/bash
 
 <do something>
 ```
 
- 1. Make is executable and place in `<path>`
+ 4. Make is executable and place in `<path>`
 ```
 $ chmod +x script
 ```

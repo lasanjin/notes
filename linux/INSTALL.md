@@ -166,8 +166,11 @@ $ echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo
      - `qt5ct`
      - `user-dirs.dirs`
  - Settings
-   - `$ gesttings list-recursively`
-     - `$ gsettings set org.cinnamon.desktop.wm.preferences titlebar-font 'Noto Sans Bold 0'`
+   - `$ gsettings list-recursively`
+     - Minimize titlebar
+       - `$ gsettings set org.cinnamon.desktop.wm.preferences titlebar-font 'Noto Sans Bold 0'`
+     - Dual monitor: do not switch workspace
+       - `$ gsettings set org.gnome.mutter workspaces-only-on-primary true`
    - Battery
    - Clock
      - `  %V  •  %Y-%m-%d  •  %R:%S`
@@ -177,6 +180,8 @@ $ echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo
    - Default directories
      - `~/.config/user-dirs.dirs`
  - Applets
+   - `.local/share/cinnamon/applets/`
+   - `this._applet_label.set_style('color: rgba(255, 255, 255, 0.5); font-family: Liberation Mono Regular; font-size: 12px;');`
    - *Simple Memory Monitor*
    - *System Monitor*
  - Extensions
@@ -208,6 +213,7 @@ $ sudo apt-get install neofetch
 ### Peek
 ```
 $ sudo add-apt-repository ppa:peek-developers/stable
+$ sudo apt update
 $ sudo apt-get install peek
 ```
 
@@ -242,3 +248,15 @@ $ dconf-editor
 ```
 $ sudo apt install kazam
 ```
+
+### Thunderbird extensions
+ - Grammar checker (Swedish)
+ - Provider for Google Calendar
+
+### Birdtray
+```
+sudo add-apt-repository ppa:linuxuprising/apps
+sudo apt-get update
+sudo apt install birdtray
+```
+Icons: `/usr/share/icons/Mint-Y/panel/`

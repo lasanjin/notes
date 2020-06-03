@@ -252,7 +252,7 @@ File -> Project Structure -> SDKs
 Help -> Find Action -> Swtich Boot JDK
 ```
 
-## VS Code
+## VSCode
 ### Settings json
 `$HOME/.config/Code/User/settings.json`
 
@@ -386,12 +386,16 @@ int[][] = {
       - `**/*.class` 
 
 
+### Shortcuts & commands
+ - Toggle Word Wrap: `Alt-Z`
+
+
 <br/>
 
 
 # Markdown
 ## Compiling Markdown with CSS into PDF
-1. Install [Pandoc](https://pandoc.org/installing.html) and [wkhtmltopdf](https://wkhtmltopdf.org/)
+1. Install [Pandoc](https://pandoc.org/installing.html), and [wkhtmltopdf](https://wkhtmltopdf.org/), the engine that produces the HTML-to-PDF output.
 ```
 $ sudo apt install pandoc
 $ sudo apt install wkhtmltopdf
