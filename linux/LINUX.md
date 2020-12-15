@@ -405,10 +405,17 @@ $ wget -r -A.pdf <URL>
 ```
 
  - Download all **zip** files on webpage
-   - `np` don't ascend to the parent directory
-   - `-l` maximum recursion depth (`inf` or `0` for infinite)
+   - `-l` maximum recursion depth 
+   - `-r`: recursive
+   - `l1`: maximum recursion depth (`inf` or `0` for infinite)
+   - `-H`: span hosts (visit other hosts in the recursion)
+   - `t1`: Number of retries
+   - `nd`: Don't make new directories, put downloaded files in this one
+   - `N`: turn on timestamping
+   - `A zip`: download only zip
+   - `erobots=off`: execute "robots.off" as if it were a part of .wgetrc
 ```
-$ wget -r -np -l 1 -A zip <URL>
+$ wget -r -l1 -H -t1 -nd -N -np -A zip -erobots=off <URL>
 ```
 
 ### Flags
@@ -549,7 +556,15 @@ r-- = 100 in binary = 4
 
  - Change owner of directory
 ```
-$ sudo chown <username>: <directory>
+$ sudo chown <username>:<username> <directory>
+```
+ - Change owner of files and folders inside a folder
+```
+$ sudo chown -R <username>:<username> <directory>
+```
+ - Change owner of files
+```
+$ sudo chown <username>:<username> <filename>
 ```
 
  - Add read+write+execute permission to username user

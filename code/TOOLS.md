@@ -152,6 +152,13 @@ $ sudo apt-get install python3-all-dev python3-wheel python3-setuptools
 $ sudo apt-get install python3-pip
 ```
 
+## Python X
+```
+$ sudo add-apt-repository ppa:deadsnakes/ppa
+$ sudo apt-get update
+$ sudo apt-get install python3.X
+```
+
 
 ## Handle versions
  - List versions
@@ -174,8 +181,20 @@ $ update-alternatives --config python
 ```
 
 
-
 ## Libraries
+
+### virtualenv
+ - virtualenv uses the command-line path environment variable to create isolated Python Virtual Environments, much as venv does (virtualenv provides additional functionality)
+ - Installing virtualenv
+   - `python3 -m pip install --user virtualenv`
+ - Creating a virtual environment
+   - `python3 -m virtualenv env`
+ - Activating a virtual environment
+   - `source env/bin/activate`
+ - Leaving the virtual environment
+   - `deactivate`
+ - Using requirements files
+   - `pip install -r requirements.txt`
 
 ### [jq](https://pypi.org/project/jq/)
 ```
